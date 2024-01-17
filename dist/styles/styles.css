@@ -1,0 +1,12 @@
+.custom-logo {
+  width: 5%;
+}
+.custom-menu {
+  height: 100vh;
+}
+
+@media only screen and (min-width: 2560px) {
+  .custom-menu {
+    width: 15%;
+  }
+}
