@@ -19,7 +19,7 @@
     <div id="content" class="container-fluid">
         <nav class="navbar navbar-light bg-light row bg-dark">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button">
+                <button class="navbar-toggler" type="button" id="menu-toggler" onclick="toggleMenu()">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -29,20 +29,40 @@
         </nav>
 
         <div id="main-content" class="row">
-            <div id="menu" class="bg-dark col-10 col-sm-9 col-md-5 col-lg-3 custom-menu">
+            <div id="menu" class="bg-dark col-10 col-sm-9 col-md-5 col-lg-3 col-xxl-2 custom-menu">
                 <h1 class="text-light">hello world</h1>
             </div>
 
         </div>
     </div>
-    <!--
+
     <script>
-        const menu = document.getElementById("menu")
-        if (window.innerWidth >= 1080) {
-            window.alert("Hello world")
+        function toggleMenu() {
+            const sideMenu = document.getElementById("menu");
+            sideMenu.classList.toggle("slide-in-out");
         }
+
+        // Ensure the menu is initially displayed for screens greater than 768px
+        window.addEventListener('resize', function () {
+            const sideMenu = document.getElementById("menu");
+            if (window.innerWidth > 768) {
+                sideMenu.classList.remove("slide-in-out");
+            } else {
+                sideMenu.classList.add("slide-in-out");
+            }
+        });
+
+        // Trigger the initial check on page load
+        window.addEventListener('load', function () {
+            const sideMenu = document.getElementById("menu");
+            if (window.innerWidth > 768) {
+                sideMenu.classList.remove("slide-in-out");
+            } else {
+                sideMenu.classList.add("slide-in-out");
+            }
+        });
     </script>
--->
+
 </body>
 
 </html>
