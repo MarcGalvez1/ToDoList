@@ -3,10 +3,29 @@
 }
 .custom-menu {
   height: 100vh;
+
+  overflow-x: hidden;
+  transition: all 0.6s ease-in-out;
+}
+
+.slide-in-out {
+  width: 0;
+  margin-left: -100%;
+}
+
+/*
+@media only screen and (max-width: 768px) {
+  .custom-menu {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .custom-menu {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 2560px) {
-  .custom-menu {
-    width: 15%;
-  }
 }
+*/
