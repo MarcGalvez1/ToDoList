@@ -32,7 +32,7 @@
         </nav>
 
         <div id="main-content" class="row">
-            <div id="menu" class="bg-dark col-12 col-sm-12 col-md-5 col-lg-4 col-xxl-2 custom-menu">
+            <div id="menu" class="bg-dark col-12 col-sm-12 col-md-5 col-lg-4 col-xxl-2 slide-animation">
                 <h1 class="text-light text-start ms-5 my-3 custom-link active">Home</h1>
                 <h5 class="text-light text-start ms-5 my-3 custom-link">Today</h5>
                 <h5 class="text-light text-start ms-5 my-3 custom-link">This Week</h5>
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div id="todos" class="col-12 col-sm-12 col-md-7 col-lg-8 col-xxl-10 bg-warning custom-todos">
+            <div id="todos" class="col-12 col-sm-12 col-md-7 col-lg-8 col-xxl-10 bg-warning slide-animation">
                 <h1 class="text-dark text-start ms-5 my-3 display-2">Todos:</h1>
             </div>
 
@@ -53,24 +53,32 @@
     </div>
 
     <script>
+        const sideMenu = document.getElementById("menu");
+        const todos = document.getElementById("todos");
         function toggleMenu() {
-            const sideMenu = document.getElementById("menu");
+
             sideMenu.classList.toggle("slide-in-out");
+            todos.classList.toggle("custom-todos");
         }
 
         // Ensure the menu is initially displayed for screens greater than 768px
         window.addEventListener('resize', function () {
-            const sideMenu = document.getElementById("menu");
+
             if (window.innerWidth > 768) {
                 sideMenu.classList.remove("slide-in-out");
+                todos.classList.remove("custom-todos"); // Remove "custom-todos" when menu is visible
             } else {
                 sideMenu.classList.add("slide-in-out");
+                todos.classList.add("custom-todos"); // Add "custom-todos" when menu is hidden
             }
+
+
+
         });
 
         // Trigger the initial check on page load
         window.addEventListener('load', function () {
-            const sideMenu = document.getElementById("menu");
+
             if (window.innerWidth > 768) {
                 sideMenu.classList.remove("slide-in-out");
             } else {
