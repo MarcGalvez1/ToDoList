@@ -44,6 +44,11 @@
   width: 100%;
 }
 
+input[type="checkbox"] {
+  transform: scale(2);
+  padding: 10px;
+}
+
 @media only screen and (max-width: 767px) {
   .custom-logo {
     width: 15%;
