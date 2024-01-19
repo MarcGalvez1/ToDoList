@@ -39,14 +39,52 @@
                 <hr class="text-light">
                 <h1 class="text-light text-start ms-5 my-3 custom-link">Projects</h1>
                 <div class="d-grid gap-2 col-6 mx-auto custom-button">
-                    <button class="btn btn-primary text-start ms-5 ps-4 " type="button">
+                    <button class="btn btn-primary text-start ms-5 ps-4 " id="new-project" type="button">
                         <h2>New Project</h2>
                     </button>
                 </div>
             </div>
 
-            <div id="todos" class="col-12 col-sm-12 col-md-7 col-lg-8 col-xxl-10 bg-warning slide-animation">
-                <h1 class="text-dark text-start ms-5 my-3 display-2">Todos:</h1>
+            <div id="todos" class="col-12 col-sm-12 col-md-7 col-lg-8 col-xxl-10 bg-info slide-animation">
+                <h1 class="text-dark text-start ms-5 my-3 display-2">To-do's:</h1>
+                <div class="d-grid mx-auto custom-button">
+                    <button class="btn btn-dark" id="new-task" type="button">
+                        <h2 class="text-center">New Task</h2>
+                    </button>
+                </div>
+
+                <div class="container-fluid mx-auto" id="tasks">
+                    <div class="row">
+                        <div class="card col-12 col-sm-6 col-md-6 col-lg-3 my-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Example Task</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Jan xx, 20xx</h6>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+                                    necessitatibus nisi incidunt error sunt sapiente libero quo expedita at in!
+                                </p>
+                                <div class="container">
+                                    <div class="row ">
+
+                                        <button class="btn btn-success mx-2 col " id="complete-task" type="button">
+                                            <h2 class="text-center">Complete</h2>
+                                        </button>
+
+                                        <button class="btn btn-warning mx-2 col " id="edit-task" type="button">
+                                            <h2 class="text-center text-light">Edit</h2>
+                                        </button>
+
+
+                                        <button class="btn btn-danger mx-2 col " id="delete-task" type="button">
+                                            <h2 class="text-center">Delete</h2>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
