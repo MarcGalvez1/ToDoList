@@ -48,14 +48,15 @@
             <div id="todos" class="col-12 col-sm-12 col-md-7 col-lg-8 col-xxl-10 bg-info slide-animation">
                 <h1 class="text-dark text-start ms-5 my-3 display-2">To-do's:</h1>
                 <div class="d-grid mx-auto custom-button">
-                    <button class="btn btn-dark" id="new-task" type="button">
+                    <button class="btn btn-dark" id="new-task" type="button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                         <h2 class="text-center">New Task</h2>
                     </button>
                 </div>
 
                 <div class="container-fluid mx-auto" id="tasks">
                     <div class="row">
-                        <div class="card col-12 col-sm-6 col-md-6 col-lg-3 my-2">
+                        <div class="card col-12 col-sm-6 col-md-8 col-lg-5 col-xl-6 col-xxl-3 my-2">
                             <div class="card-body">
                                 <h5 class="card-title">Example Task</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Jan xx, 20xx</h6>
@@ -65,16 +66,16 @@
                                 <div class="container">
                                     <div class="row ">
 
-                                        <button class="btn btn-success mx-2 col " id="complete-task" type="button">
+                                        <button class="btn btn-success mx-2 my-1 col " id="complete-task" type="button">
                                             <h2 class="text-center">Complete</h2>
                                         </button>
 
-                                        <button class="btn btn-warning mx-2 col " id="edit-task" type="button">
+                                        <button class="btn btn-warning mx-2 my-1 col " id="edit-task" type="button">
                                             <h2 class="text-center text-light">Edit</h2>
                                         </button>
 
 
-                                        <button class="btn btn-danger mx-2 col " id="delete-task" type="button">
+                                        <button class="btn btn-danger mx-2 my-1 col " id="delete-task" type="button">
                                             <h2 class="text-center">Delete</h2>
                                         </button>
 
@@ -85,6 +86,24 @@
                     </div>
                 </div>
 
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="tasks-form" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tasks-form">New Task</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
