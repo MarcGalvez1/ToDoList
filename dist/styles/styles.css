@@ -41,19 +41,30 @@
   text-decoration: underline;
 }
 
-/*
-@media only screen and (max-width: 768px) {
-  .custom-menu {
-    display: none;
+@media only screen and (max-width: 767px) {
+  .custom-logo {
+    width: 10%;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .custom-menu {
-    display: block;
+  .custom-logo {
+    width: 9%;
   }
 }
 
-@media only screen and (min-width: 2560px) {
+@media only screen and (min-width: 992px) {
+  .custom-logo {
+    width: 6%;
+  }
 }
-*/
+@media only screen and (min-width: 1200px) {
+  .custom-logo {
+    width: 6%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .custom-logo {
+    width: 3%;
+  }
+}
