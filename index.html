@@ -19,18 +19,30 @@
     <div id="content" class="container-fluid">
         <nav class="navbar navbar-light bg-light row bg-dark">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" id="menu-toggler" onclick="toggleMenu()">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="icon" onclick="toggleMenu()">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
 
                 <img src="./images/logo.png" alt="" class="d-inline-block align-text-top custom-logo">
-                <h1 class="display-1 mx-auto d-block text-center text-light">Notes</h1>
+                <h1 class="display-1 mx-auto d-block text-center text-light">To-Do List</h1>
             </div>
         </nav>
 
         <div id="main-content" class="row">
-            <div id="menu" class="bg-dark col-10 col-sm-9 col-md-5 col-lg-3 col-xxl-2 custom-menu">
-                <h1 class="text-light">hello world</h1>
+            <div id="menu" class="bg-dark col-12 col-sm-12 col-md-5 col-lg-3 col-xxl-2 custom-menu">
+                <h1 class="text-light text-start ms-5 my-3 custom-link active">Home</h1>
+                <h5 class="text-light text-start ms-5 my-3 custom-link">Today</h5>
+                <h5 class="text-light text-start ms-5 my-3 custom-link">This Week</h5>
+                <hr class="text-light">
+                <h1 class="text-light text-start ms-5 my-3 custom-link">Projects</h1>
+                <div class="d-grid gap-2 col-6 mx-auto custom-button">
+                    <button class="btn btn-primary text-start ms-5 ps-4 " type="button">
+                        <h2>New Project</h2>
+                    </button>
+                </div>
             </div>
 
         </div>
