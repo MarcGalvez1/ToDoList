@@ -39,7 +39,8 @@
                 <hr class="text-light">
                 <h1 class="text-light text-start ms-5 my-3 custom-link">Projects</h1>
                 <div class="d-grid gap-2 col-6 mx-auto custom-button">
-                    <button class="btn btn-primary text-start ms-5 ps-4 " id="new-project" type="button">
+                    <button class="btn btn-primary text-start ms-5 ps-4 " id="new-project" type="button"
+                        data-bs-toggle="modal" data-bs-target="#new-project-modal">
                         <h2>New Project</h2>
                     </button>
                 </div>
@@ -49,7 +50,7 @@
                 <h1 class="text-dark text-start ms-5 my-3 display-2">To-do's:</h1>
                 <div class="d-grid mx-auto custom-button">
                     <button class="btn btn-dark" id="new-task" type="button" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
+                        data-bs-target="#new-project-modal">
                         <h2 class="text-center">New Task</h2>
                     </button>
                 </div>
@@ -86,7 +87,38 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="tasks-form" aria-hidden="true">
+                <!--Modals-->
+
+                <div class="modal fade" id="new-project-modal" tabindex="-1" aria-labelledby="tasks-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tasks-form">New Project</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="project-name" class="form-label">Project Name:</label>
+                                    <input type="text" class="form-control" id="project-name"
+                                        placeholder="Example project">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="project-description" class="form-label">Description:</label>
+                                    <textarea class="form-control" id="project-description" rows="3"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="new-task-modal" tabindex="-1" aria-labelledby="tasks-form"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -95,11 +127,21 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="mb-3">
+                                    <label for="task-name" class="form-label">Task Name:</label>
+                                    <input type="text" class="form-control" id="task-name" placeholder="Example Task">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="task-description" class="form-label">Description:</label>
+                                    <textarea class="form-control" id="task-description" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="due-date" class="form-label">Due Date:</label>
+                                    <input type="date" class="form-control" id="due-date" name="due-date">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
                             </div>
                         </div>
                     </div>
