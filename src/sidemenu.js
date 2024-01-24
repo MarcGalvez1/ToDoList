@@ -11,6 +11,37 @@ function sideMenu() {
     "slide-animation"
   );
 
+  // Menu list
+  // Home
+  const home = document.createElement("h1");
+  home.classList.add(
+    "text-light",
+    "text-start",
+    "ms-5",
+    "my-3",
+    "custom-link",
+    "active"
+  );
+  home.textContent = "Home";
+  // Today
+  const today = document.createElement("h5");
+  today.classList.add(
+    "text-light",
+    "text-start",
+    "ms-5",
+    "my-3",
+    "custom-link"
+  );
+  // Week
+  today.textContent = "Today";
+  const week = document.createElement("h5");
+  week.classList.add("text-light", "text-start", "ms-5", "my-3", "custom-link");
+  week.textContent = "This Week";
+
+  menuContainer.appendChild(home);
+  menuContainer.appendChild(today);
+  menuContainer.appendChild(week);
+
   return menuContainer;
 }
 
