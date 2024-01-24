@@ -26,7 +26,7 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav */ \"./src/nav.js\");\n\r\n\r\n\r\nconst content = document.getElementById(\"content\");\r\n\r\ncontent.appendChild((0,_nav__WEBPACK_IMPORTED_MODULE_1__[\"default\"])());\r\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav */ \"./src/nav.js\");\n/* harmony import */ var _sidemenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidemenu */ \"./src/sidemenu.js\");\n\r\n\r\n\r\n\r\nconst content = document.getElementById(\"content\");\r\n\r\ncontent.appendChild((0,_nav__WEBPACK_IMPORTED_MODULE_1__[\"default\"])());\r\n\r\n// Create the main content container\r\nconst mainContent = document.createElement(\"div\");\r\nmainContent.id = \"main-content\";\r\nmainContent.classList.add(\"row\");\r\nmainContent.appendChild((0,_sidemenu__WEBPACK_IMPORTED_MODULE_2__[\"default\"])());\r\n\r\ncontent.appendChild(mainContent);\r\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
 
 /***/ }),
 
@@ -38,6 +38,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var loda
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction navBar() {\r\n  // Outer most nav container\r\n  const navContainer = document.createElement(\"nav\");\r\n  navContainer.classList.add(\r\n    \"navbar\",\r\n    \"navbar-light\",\r\n    \"bg-light\",\r\n    \"row\",\r\n    \"bg-dark\"\r\n  );\r\n\r\n  // Contains all inner elements\r\n  const navContent = document.createElement(\"div\");\r\n  navContent.classList.add(\"container-fluid\");\r\n\r\n  // Icon container\r\n  const iconContainer = document.createElement(\"icon\");\r\n  iconContainer.classList.add(\"icon\");\r\n\r\n  // Creates the 3 icon bars\r\n  for (let i = 1; i <= 3; i++) {\r\n    const IconBar = document.createElement(\"div\");\r\n    IconBar.classList.add(\"bar\" + i);\r\n    iconContainer.appendChild(IconBar);\r\n  }\r\n\r\n  // Logo\r\n  const logo = document.createElement(\"img\");\r\n  logo.classList.add(\"d-inline-block\", \"align-text-top\", \"custom-logo\");\r\n  logo.src = \"./images/logo.png\";\r\n\r\n  // Title\r\n  const title = document.createElement(\"h1\");\r\n  title.classList.add(\r\n    \"display-1\",\r\n    \"mx-auto\",\r\n    \"dblock\",\r\n    \"text-center\",\r\n    \"text-light\"\r\n  );\r\n  title.innerText = \"To-Do List\";\r\n\r\n  navContent.appendChild(iconContainer);\r\n  navContent.appendChild(logo);\r\n  navContent.appendChild(title);\r\n\r\n  navContainer.appendChild(navContent);\r\n\r\n  return navContainer;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navBar);\r\n\n\n//# sourceURL=webpack://webpack-demo/./src/nav.js?");
+
+/***/ }),
+
+/***/ "./src/sidemenu.js":
+/*!*************************!*\
+  !*** ./src/sidemenu.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction sideMenu() {\r\n  const menuContainer = document.createElement(\"div\");\r\n  menuContainer.id = \"menu\";\r\n  menuContainer.classList.add(\r\n    \"bg-dark\",\r\n    \"col-12\",\r\n    \"col-sm-12\",\r\n    \"col-md-5\",\r\n    \"col-lg-4\",\r\n    \"col-xxl-2\",\r\n    \"slide-animation\"\r\n  );\r\n\r\n  return menuContainer;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sideMenu);\r\n\n\n//# sourceURL=webpack://webpack-demo/./src/sidemenu.js?");
 
 /***/ })
 
