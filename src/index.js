@@ -1,6 +1,7 @@
 import _ from "lodash";
 import navBar from "./nav";
 import sideMenu from "./sidemenu";
+import eventListeners from "./eventListeners";
 
 const content = document.getElementById("content");
 
@@ -13,3 +14,4 @@ mainContent.classList.add("row");
 mainContent.appendChild(sideMenu());
 
 content.appendChild(mainContent);
+eventListeners();
