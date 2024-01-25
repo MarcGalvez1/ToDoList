@@ -1,3 +1,4 @@
+import toggleMenu from "./eventListeners";
 function navBar() {
   // Outer most nav container
   const navContainer = document.createElement("nav");
@@ -16,6 +17,7 @@ function navBar() {
   // Icon container
   const iconContainer = document.createElement("icon");
   iconContainer.classList.add("icon");
+  iconContainer.addEventListener("click", toggleMenu);
 
   // Creates the 3 icon bars
   for (let i = 1; i <= 3; i++) {
