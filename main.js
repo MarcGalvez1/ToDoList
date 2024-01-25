@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/eventListeners.js":
+/*!*******************************!*\
+  !*** ./src/eventListeners.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction eventListeners() {\n  document.addEventListener(\"DOMContentLoaded\", function () {\n    var sideMenuSlide = document.getElementById(\"menu\");\n    var todosSlide = document.getElementById(\"todos\");\n    var iconToggle = document.getElementById(\"icon\");\n    iconToggle.addEventListener(\"click\", function () {\n      sideMenuSlide.classList.toggle(\"slide-in-out\");\n      todosSlide.classList.toggle(\"custom-todos\");\n    });\n    window.addEventListener(\"resize\", function () {\n      if (window.innerWidth > 768) {\n        sideMenuSlide.classList.remove(\"slide-in-out\");\n        todosSlide.classList.remove(\"custom-todos\"); // Remove \"custom-todos\" when menu is visible\n      } else {\n        sideMenuSlide.classList.add(\"slide-in-out\");\n        todosSlide.classList.add(\"custom-todos\"); // Add \"custom-todos\" when menu is hidden\n      }\n    });\n    window.addEventListener(\"load\", function () {\n      if (window.innerWidth > 768) {\n        sideMenuSlide.classList.remove(\"slide-in-out\");\n      } else {\n        sideMenuSlide.classList.add(\"slide-in-out\");\n      }\n    });\n  });\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (eventListeners);\n\n//# sourceURL=webpack://webpack-demo/./src/eventListeners.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -16,7 +27,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav */ \"./src/nav.js\");\n/* harmony import */ var _sidemenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidemenu */ \"./src/sidemenu.js\");\n\n\n\nvar content = document.getElementById(\"content\");\ncontent.appendChild((0,_nav__WEBPACK_IMPORTED_MODULE_1__[\"default\"])());\n\n// Create the main content container\nvar mainContent = document.createElement(\"div\");\nmainContent.id = \"main-content\";\nmainContent.classList.add(\"row\");\nmainContent.appendChild((0,_sidemenu__WEBPACK_IMPORTED_MODULE_2__[\"default\"])());\ncontent.appendChild(mainContent);\nvar sideMenuSlide = document.getElementById(\"menu\");\nvar todosSlide = document.getElementById(\"todos\");\nvar iconToggle = document.getElementById(\"icon\");\niconToggle.addEventListener(\"click\", function () {\n  sideMenuSlide.classList.toggle(\"slide-in-out\");\n  todosSlide.classList.toggle(\"custom-todos\");\n});\nwindow.addEventListener(\"resize\", function () {\n  if (window.innerWidth > 768) {\n    sideMenuSlide.classList.remove(\"slide-in-out\");\n    todosSlide.classList.remove(\"custom-todos\"); // Remove \"custom-todos\" when menu is visible\n  } else {\n    sideMenuSlide.classList.add(\"slide-in-out\");\n    todosSlide.classList.add(\"custom-todos\"); // Add \"custom-todos\" when menu is hidden\n  }\n});\nwindow.addEventListener(\"load\", function () {\n  if (window.innerWidth > 768) {\n    sideMenuSlide.classList.remove(\"slide-in-out\");\n  } else {\n    sideMenuSlide.classList.add(\"slide-in-out\");\n  }\n});\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav */ \"./src/nav.js\");\n/* harmony import */ var _sidemenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sidemenu */ \"./src/sidemenu.js\");\n/* harmony import */ var _eventListeners__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./eventListeners */ \"./src/eventListeners.js\");\n\n\n\n\nvar content = document.getElementById(\"content\");\ncontent.appendChild((0,_nav__WEBPACK_IMPORTED_MODULE_1__[\"default\"])());\n\n// Create the main content container\nvar mainContent = document.createElement(\"div\");\nmainContent.id = \"main-content\";\nmainContent.classList.add(\"row\");\nmainContent.appendChild((0,_sidemenu__WEBPACK_IMPORTED_MODULE_2__[\"default\"])());\ncontent.appendChild(mainContent);\n(0,_eventListeners__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
 
 /***/ }),
 
