@@ -1,34 +1,31 @@
-const sideMenu = document.getElementById("menu");
-const todos = document.getElementById("todos");
-// function toggleMenu() {
-//   sideMenu.classList.toggle("slide-in-out");
-//   todos.classList.toggle("custom-todos");
-// }
+function eventListeners() {
+  document.addEventListener("DOMContentLoaded", () => {
+    const sideMenuSlide = document.getElementById("menu");
+    const todosSlide = document.getElementById("todos");
+    const iconToggle = document.getElementById("icon");
 
-function sideMenuHandler() {
-  sideMenu.addEventListener("click", () => {
-    console.log("Hello");
+    iconToggle.addEventListener("click", () => {
+      sideMenuSlide.classList.toggle("slide-in-out");
+      todosSlide.classList.toggle("custom-todos");
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) {
+        sideMenuSlide.classList.remove("slide-in-out");
+        todosSlide.classList.remove("custom-todos"); // Remove "custom-todos" when menu is visible
+      } else {
+        sideMenuSlide.classList.add("slide-in-out");
+        todosSlide.classList.add("custom-todos"); // Add "custom-todos" when menu is hidden
+      }
+    });
+
+    window.addEventListener("load", function () {
+      if (window.innerWidth > 768) {
+        sideMenuSlide.classList.remove("slide-in-out");
+      } else {
+        sideMenuSlide.classList.add("slide-in-out");
+      }
+    });
   });
 }
-// Ensure the menu is initially displayed for screens greater than 768px
-window.addEventListener("resize", function () {
-  if (window.innerWidth > 768) {
-    sideMenu.classList.remove("slide-in-out");
-    todos.classList.remove("custom-todos"); // Remove "custom-todos" when menu is visible
-  } else {
-    sideMenu.classList.add("slide-in-out");
-    todos.classList.add("custom-todos"); // Add "custom-todos" when menu is hidden
-  }
-});
-
-function loadHandler() {
-  // Trigger the initial check on page load
-  window.addEventListener("load", function () {
-    if (window.innerWidth > 768) {
-      sideMenu.classList.remove("slide-in-out");
-    } else {
-      sideMenu.classList.add("slide-in-out");
-    }
-  });
-}
-export default { sideMenuHandler, loadHandler };
+export default eventListeners;
