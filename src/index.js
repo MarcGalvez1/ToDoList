@@ -11,7 +11,21 @@ content.appendChild(navBar());
 const mainContent = document.createElement("div");
 mainContent.id = "main-content";
 mainContent.classList.add("row");
-mainContent.appendChild(sideMenu());
 
+// Create the todos side of the content
+const todosContainer = document.createElement("div");
+todosContainer.id = "todos";
+todosContainer.classList.add(
+  "col-12",
+  "col-sm-12",
+  "col-md-7",
+  "col-lg-8",
+  "col-xxl-10",
+  "bg-info",
+  "slide-animation"
+);
+mainContent.appendChild(sideMenu());
+mainContent.appendChild(todosContainer);
 content.appendChild(mainContent);
+
 eventListeners();
