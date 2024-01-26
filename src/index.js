@@ -1,10 +1,12 @@
 import _ from "lodash";
+import projectModal from "./projectModal";
 import navBar from "./nav";
 import sideMenu from "./sidemenu";
+import todos from "./todos";
 import eventListeners from "./eventListeners";
 
 const content = document.getElementById("content");
-
+content.appendChild(projectModal());
 content.appendChild(navBar());
 
 // Create the main content container
@@ -24,8 +26,11 @@ todosContainer.classList.add(
   "bg-info",
   "slide-animation"
 );
+todosContainer.appendChild(todos());
+
 mainContent.appendChild(sideMenu());
 mainContent.appendChild(todosContainer);
+
 content.appendChild(mainContent);
 
 eventListeners();
