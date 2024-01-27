@@ -1,12 +1,11 @@
 import _ from "lodash";
-import projectModal from "./projectModal";
+
 import navBar from "./nav";
 import sideMenu from "./sidemenu";
 import todos from "./todos";
 import eventListeners from "./eventListeners";
-
+import projectModal from "./projectModal";
 const content = document.getElementById("content");
-content.appendChild(projectModal());
 content.appendChild(navBar());
 
 // Create the main content container
@@ -27,6 +26,7 @@ todosContainer.classList.add(
   "slide-animation"
 );
 todosContainer.appendChild(todos());
+todosContainer.appendChild(projectModal());
 
 mainContent.appendChild(sideMenu());
 mainContent.appendChild(todosContainer);
