@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting Started</title>
     <script src="main.js" defer></script>
     <script src="https://unpkg.com/lodash@4.17.20" defer></script>
@@ -11,9 +12,147 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
         defer></script>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
+
+    <div id="content" class="container-fluid">
+        <!--
+        <nav class="navbar navbar-light bg-light row bg-dark">
+            <div class="container-fluid">
+                <div class="icon" onclick="toggleMenu()">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
+
+                <img src="./images/logo.png" alt="" class="d-inline-block align-text-top custom-logo">
+                <h1 class="display-1 mx-auto d-block text-center text-light">To-Do List</h1>
+            </div>
+        </nav>
+
+        <div id="main-content" class="row">
+            <div id="menu" class="bg-dark col-12 col-sm-12 col-md-5 col-lg-4 col-xxl-2 slide-animation">
+                <h1 class="text-light text-start ms-5 my-3 custom-link active">Home</h1>
+                <h5 class="text-light text-start ms-5 my-3 custom-link">Today</h5>
+                <h5 class="text-light text-start ms-5 my-3 custom-link">This Week</h5>
+                <hr class="text-light">
+                <h1 class="text-light text-start ms-5 my-3 custom-link">Projects</h1>
+                <div class="d-grid gap-2 col-6 mx-auto custom-button">
+                    <button class="btn btn-primary text-start ms-5 ps-4 " id="new-project" type="button"
+                        data-bs-toggle="modal" data-bs-target="#new-project-modal">
+                        <h2>New Project</h2>
+                    </button>
+                </div>
+            </div>
+
+            <div id="todos" class="col-12 col-sm-12 col-md-7 col-lg-8 col-xxl-10 bg-info slide-animation">
+                <h1 class="text-dark text-start ms-5 my-3 display-2">To-do's:</h1>
+                <div class="d-grid mx-auto custom-button">
+                    <button class="btn btn-dark" id="new-task" type="button" data-bs-toggle="modal"
+                        data-bs-target="#new-project-modal">
+                        <h2 class="text-center">New Task</h2>
+                    </button>
+                </div>
+
+                <div class="container-fluid mx-auto" id="tasks">
+                    <div class="row">
+                        <div class="card col-12 col-sm-6 col-md-8 col-lg-5 col-xl-6 col-xxl-3 my-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Example Task</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Jan xx, 20xx</h6>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+                                    necessitatibus nisi incidunt error sunt sapiente libero quo expedita at in!
+                                </p>
+                                <div class="container">
+                                    <div class="row ">
+
+                                        <button class="btn btn-success mx-2 my-1 col " id="complete-task" type="button">
+                                            <h2 class="text-center">Complete</h2>
+                                        </button>
+
+                                        <button class="btn btn-warning mx-2 my-1 col " id="edit-task" type="button">
+                                            <h2 class="text-center text-light">Edit</h2>
+                                        </button>
+
+
+                                        <button class="btn btn-danger mx-2 my-1 col " id="delete-task" type="button">
+                                            <h2 class="text-center">Delete</h2>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+ 
+
+                <div class="modal fade" id="new-project-modal" tabindex="-1" aria-labelledby="tasks-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tasks-form">New Project</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="project-name" class="form-label">Project Name:</label>
+                                    <input type="text" class="form-control" id="project-name"
+                                        placeholder="Example project">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="project-description" class="form-label">Description:</label>
+                                    <textarea class="form-control" id="project-description" rows="3"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="new-task-modal" tabindex="-1" aria-labelledby="tasks-form"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tasks-form">New Task</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="task-name" class="form-label">Task Name:</label>
+                                    <input type="text" class="form-control" id="task-name" placeholder="Example Task">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="task-description" class="form-label">Description:</label>
+                                    <textarea class="form-control" id="task-description" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="due-date" class="form-label">Due Date:</label>
+                                    <input type="date" class="form-control" id="due-date" name="due-date">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    -->
+    </div>
 
 </body>
 
