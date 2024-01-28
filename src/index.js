@@ -5,6 +5,7 @@ import sideMenu from "./sidemenu";
 import todos from "./todos";
 import eventListeners from "./eventListeners";
 import projectModal from "./projectModal";
+import taskModal from "./taskModal";
 const content = document.getElementById("content");
 content.appendChild(navBar());
 
@@ -27,6 +28,7 @@ todosContainer.classList.add(
 );
 todosContainer.appendChild(todos());
 todosContainer.appendChild(projectModal());
+todosContainer.appendChild(taskModal());
 
 mainContent.appendChild(sideMenu());
 mainContent.appendChild(todosContainer);

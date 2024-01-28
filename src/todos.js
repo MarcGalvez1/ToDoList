@@ -21,7 +21,7 @@ function todos() {
   createTodosBtn.id = "new-task";
   createTodosBtn.type = "button";
   createTodosBtn.setAttribute("data-bs-toggle", "modal");
-  createTodosBtn.setAttribute("data-bs-target", "#new-project-modal");
+  createTodosBtn.setAttribute("data-bs-target", "#new-task-modal");
 
   // Create the <h2> element with the specified class and text content
   const btnText = document.createElement("h2");
