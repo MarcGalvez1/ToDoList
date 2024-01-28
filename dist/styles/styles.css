@@ -1,0 +1,73 @@
+.custom-logo {
+  width: 5%;
+}
+.slide-animation {
+  height: 100vh;
+
+  overflow-x: hidden;
+  transition: all 0.6s ease-in-out;
+}
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 60px;
+  height: 8px;
+  background-color: white;
+  margin: 10px;
+  transition: 0.4s;
+}
+
+.slide-in-out {
+  width: 0%;
+  padding: 0%;
+}
+
+.custom-button {
+  width: 100%;
+}
+
+.custom-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.active {
+  text-decoration: underline;
+}
+.custom-todos {
+  width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .custom-logo {
+    width: 15%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .custom-logo {
+    width: 9%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .custom-logo {
+    width: 6%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .custom-logo {
+    width: 6%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .custom-logo {
+    width: 3%;
+  }
+}
