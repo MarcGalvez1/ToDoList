@@ -40,6 +40,11 @@ function projectModal() {
   const modalBody = document.createElement("div");
   modalBody.classList.add("modal-body");
 
+  // Contains form
+  const newProjectForm = document.createElement("form");
+  newProjectForm.id = "new-project-form";
+  newProjectForm.classList.add("mx-2", "mt-2");
+
   // Contains the form label for the project name
   const projectNameContainer = document.createElement("div");
   projectNameContainer.classList.add("mb-3");
@@ -91,10 +96,13 @@ function projectModal() {
 
   submitContainer.appendChild(submitBtn);
 
-  // Appends the child elements of modal body
-  modalBody.appendChild(projectNameContainer);
-  modalBody.appendChild(projectDescContainer);
-  modalBody.appendChild(submitContainer);
+  // Appends the child elements of modal form
+  newProjectForm.appendChild(projectNameContainer);
+  newProjectForm.appendChild(projectDescContainer);
+  newProjectForm.appendChild(submitContainer);
+
+  // Appends form to body
+  modalBody.appendChild(newProjectForm);
 
   // Appends all child elements to modalContent
   modalContent.appendChild(modalHeader);

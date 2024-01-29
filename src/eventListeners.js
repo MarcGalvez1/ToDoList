@@ -1,9 +1,12 @@
+import { Project, ProjectList } from "./controls";
+
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
     const sideMenuSlide = document.getElementById("menu");
     const todosSlide = document.getElementById("todos");
     const iconToggle = document.getElementById("icon");
+    const projectForm = document.getElementById("new-project-form");
 
     iconToggle.addEventListener("click", () => {
       //Allows the menu to slide in and out when the icon is clicked
@@ -30,6 +33,8 @@ function eventListeners() {
         sideMenuSlide.classList.add("slide-in-out");
       }
     });
+
+    projectForm.onsubmit();
   });
 }
 export default eventListeners;
