@@ -2,7 +2,7 @@ import { forEach } from "lodash";
 
 class ProjectList {
   constructor() {
-    const projectArr = [];
+    this.projectArr = [];
   }
   addProject(project) {
     this.projectArr.push(project);

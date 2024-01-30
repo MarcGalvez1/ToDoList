@@ -21,7 +21,7 @@ function projectModal() {
 
   // Modal Title
   const modalTitle = document.createElement("h5");
-  modalTitle.id = "tasks-form";
+  modalTitle.id = "projects-title";
   modalTitle.classList.add("modal-title");
   modalTitle.innerText = "New Project";
 

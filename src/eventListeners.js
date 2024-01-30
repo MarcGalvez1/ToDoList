@@ -1,6 +1,7 @@
 import { Project, ProjectList } from "./controls";
 
 function eventListeners() {
+  const projectList = new ProjectList();
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
     const sideMenuSlide = document.getElementById("menu");
@@ -34,7 +35,17 @@ function eventListeners() {
       }
     });
 
-    projectForm.onsubmit();
+    projectForm.onsubmit = (event) => {
+      event.preventDefault();
+      const projectName = document.getElementById("project-name");
+      const projectDescription = document.getElementById("project-description");
+      const currProject = new Project(
+        projectName.value,
+        projectDescription.value
+      );
+      projectList.addProject(currProject);
+      projectList.displayProjectList();
+    };
   });
 }
 export default eventListeners;
