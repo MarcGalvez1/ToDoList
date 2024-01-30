@@ -10,10 +10,21 @@ class ProjectList {
   displayProjectList() {
     console.log(this.projectArr);
   }
-  //   displayProjects() {
-  //     for (const project in this.projectArr) {
-  //     }
-  //   }
+  displayProjectTag() {
+    const sideMenu = document.getElementById("menu");
+
+    const projectTag = document.createElement("h5");
+    projectTag.classList.add(
+      "text-light",
+      "text-start",
+      "ms-5",
+      "my-3",
+      "custom-link",
+      "projects"
+    );
+    projectTag.innerText = project.getName();
+    sideMenu.appendChild(projectTag);
+  }
 }
 
 class Project {
@@ -21,6 +32,9 @@ class Project {
     this.name = name;
     this.description = description;
     // const taskList = [];
+  }
+  getName() {
+    return this.name;
   }
 }
 

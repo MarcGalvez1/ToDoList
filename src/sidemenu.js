@@ -32,8 +32,9 @@ function sideMenu() {
     "my-3",
     "custom-link"
   );
-  // Week
   today.textContent = "Today";
+  // Week
+
   const week = document.createElement("h5");
   week.classList.add("text-light", "text-start", "ms-5", "my-3", "custom-link");
   week.textContent = "This Week";

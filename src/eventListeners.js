@@ -38,12 +38,14 @@ function eventListeners() {
     projectForm.onsubmit = (event) => {
       event.preventDefault();
       const projectName = document.getElementById("project-name");
+      const sideMenu = document.getElementById("menu");
       const projectDescription = document.getElementById("project-description");
       const currProject = new Project(
         projectName.value,
         projectDescription.value
       );
       projectList.addProject(currProject);
+      projectList.displayProjects();
       projectList.displayProjectList();
     };
   });
