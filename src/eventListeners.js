@@ -45,7 +45,7 @@ function eventListeners() {
         projectDescription.value
       );
       projectList.addProject(currProject);
-      projectList.displayProjects();
+      currProject.displayProjectTag();
       projectList.displayProjectList();
     };
   });

@@ -10,6 +10,14 @@ class ProjectList {
   displayProjectList() {
     console.log(this.projectArr);
   }
+}
+
+class Project {
+  constructor(name, description) {
+    this.name = name;
+    this.description = description;
+    // const taskList = [];
+  }
   displayProjectTag() {
     const sideMenu = document.getElementById("menu");
 
@@ -22,16 +30,8 @@ class ProjectList {
       "custom-link",
       "projects"
     );
-    projectTag.innerText = project.getName();
+    projectTag.innerText = this.name;
     sideMenu.appendChild(projectTag);
-  }
-}
-
-class Project {
-  constructor(name, description) {
-    this.name = name;
-    this.description = description;
-    // const taskList = [];
   }
   getName() {
     return this.name;
