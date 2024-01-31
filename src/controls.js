@@ -1,5 +1,3 @@
-import { forEach } from "lodash";
-
 class ProjectList {
   constructor() {
     this.projectArr = [];
@@ -34,11 +32,13 @@ class Project {
       "custom-link",
       "projects"
     );
-    projectTag.addEventListener("click", () => {
-      window.alert("hello");
-    });
+
     projectTag.innerText = this.name;
+
     projectsContainer.appendChild(projectTag);
+    projectTag.addEventListener("click", () => {
+      console.log("Hello, World");
+    });
   }
   getName() {
     return this.name;

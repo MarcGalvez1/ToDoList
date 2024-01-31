@@ -44,7 +44,6 @@ function eventListeners() {
         projectDescription.value
       );
       projectList.addProject(currProject);
-      //currProject.displayProjectTag();
       projectList.displayProjectList();
     };
 

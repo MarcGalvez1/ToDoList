@@ -64,7 +64,9 @@ function sideMenu() {
 
   buttonContainer.append(button);
 
-  const projectsContainer = document.createElement("projects-container");
+  const projectsContainer = document.createElement("div");
+  projectsContainer.id = "projects-container";
+  projectsContainer.innerText = "Hello";
 
   menuContainer.appendChild(home);
   menuContainer.appendChild(today);
