@@ -9,6 +9,11 @@ class ProjectList {
   }
   displayProjectList() {
     console.log(this.projectArr);
+    const projectsContainer = document.getElementById("projects-container");
+    projectsContainer.innerHTML = "";
+    for (const project of this.projectArr) {
+      project.displayProjectTag();
+    }
   }
 }
 
@@ -19,9 +24,8 @@ class Project {
     // const taskList = [];
   }
   displayProjectTag() {
-    const sideMenu = document.getElementById("menu");
-
     const projectTag = document.createElement("h5");
+    const projectsContainer = document.getElementById("projects-container");
     projectTag.classList.add(
       "text-light",
       "text-start",
@@ -30,8 +34,11 @@ class Project {
       "custom-link",
       "projects"
     );
+    projectTag.addEventListener("click", () => {
+      window.alert("hello");
+    });
     projectTag.innerText = this.name;
-    sideMenu.appendChild(projectTag);
+    projectsContainer.appendChild(projectTag);
   }
   getName() {
     return this.name;

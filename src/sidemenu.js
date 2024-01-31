@@ -64,11 +64,14 @@ function sideMenu() {
 
   buttonContainer.append(button);
 
+  const projectsContainer = document.createElement("projects-container");
+
   menuContainer.appendChild(home);
   menuContainer.appendChild(today);
   menuContainer.appendChild(week);
   menuContainer.appendChild(horizontalRule);
   menuContainer.appendChild(buttonContainer);
+  menuContainer.appendChild(projectsContainer);
 
   return menuContainer;
 }
