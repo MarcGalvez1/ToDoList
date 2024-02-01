@@ -43,7 +43,12 @@
 .custom-todos {
   width: 100%;
 }
-
+.del-icon {
+  display: none;
+}
+.projects:hover .del-icon {
+  display: block;
+}
 @media only screen and (max-width: 767px) {
   .custom-logo {
     width: 15%;
