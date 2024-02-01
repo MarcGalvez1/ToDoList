@@ -1,4 +1,4 @@
-import { Project, ProjectList } from "./controls";
+import { Project, ProjectList, Task } from "./controls";
 
 function eventListeners() {
   const projectList = new ProjectList();
@@ -68,6 +68,9 @@ function eventListeners() {
         }
       }
     });
+    const todosContainer = document.getElementById("todos");
+    const taskTest = new Task("Hello", "World", "12");
+    todosContainer.appendChild(taskTest.createTask());
   });
 }
 export default eventListeners;
