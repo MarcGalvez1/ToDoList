@@ -13,10 +13,11 @@ function sideMenu() {
 
   // Menu list
   // Home
-  const home = document.createElement("h1");
+  const home = document.createElement("h5");
   home.classList.add(
     "text-light",
     "text-start",
+    "h1",
     "ms-5",
     "my-3",
     "custom-link",
