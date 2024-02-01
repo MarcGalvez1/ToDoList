@@ -47,10 +47,27 @@ function eventListeners() {
       projectList.displayProjectList();
     };
 
-    // const projectListDOM = document.querySelectorAll("projects");
-    // projectListDOM.addEventListener("click", () => {
-    //   console.log("Hello");
-    // });
+    const menuList = document.getElementById("menu");
+    menuList.addEventListener("click", (event) => {
+      // Check if the clicked element has the class .custom-link
+      if (event.target.classList.contains("custom-link")) {
+        // Remove "h1" and "active" classes from all elements with .custom-link
+        const customLinksToggler = document.querySelectorAll(".custom-link");
+        customLinksToggler.forEach((element) => {
+          element.classList.remove("h1", "active");
+        });
+
+        // Add "h1" and "active" classes to the clicked element
+        event.target.classList.add("h1", "active");
+
+        // edit the size of the delete button
+        const closestSibling = event.target.nextElementSibling;
+        if (closestSibling) {
+          closestSibling.classList.remove("h5");
+          closestSibling.classList.add("h1");
+        }
+      }
+    });
   });
 }
 export default eventListeners;
