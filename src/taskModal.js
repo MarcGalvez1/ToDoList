@@ -40,6 +40,11 @@ function taskModal() {
   const modalBody = document.createElement("div");
   modalBody.classList.add("modal-body");
 
+  // Contains form
+  const newTaskForm = document.createElement("form");
+  newTaskForm.id = "new-task-form";
+  newTaskForm.classList.add("mx-2", "mt-2");
+
   // Contains the form label for the task name
   const taskNameContainer = document.createElement("div");
   taskNameContainer.classList.add("mb-3");
@@ -108,11 +113,14 @@ function taskModal() {
 
   submitContainer.appendChild(submitBtn);
 
-  // Appends the child elements of modal body
-  modalBody.appendChild(taskNameContainer);
-  modalBody.appendChild(taskDescContainer);
-  modalBody.appendChild(dueDateContainer);
-  modalBody.appendChild(submitContainer);
+  // Appends the child elements of taskform
+  newTaskForm.appendChild(taskNameContainer);
+  newTaskForm.appendChild(taskDescContainer);
+  newTaskForm.appendChild(dueDateContainer);
+  newTaskForm.appendChild(submitContainer);
+
+  // Appends all child elements to modal body
+  modalBody.appendChild(newTaskForm);
 
   // Appends all child elements to modalContent
   modalContent.appendChild(modalHeader);

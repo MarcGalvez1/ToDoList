@@ -120,18 +120,17 @@ class Task {
     // Card Title
     const cardTitle = document.createElement("h5");
     cardTitle.classList.add("card-title");
-    cardTitle.textContent = "Example Task";
+    cardTitle.textContent = this.taskName;
 
     // Date
     const cardSubtitle = document.createElement("h6");
     cardSubtitle.classList.add("card-subtitle", "mb-2", "text-muted");
-    cardSubtitle.textContent = "Jan xx, 20xx";
+    cardSubtitle.textContent = this.taskDueDate;
 
     // Description
     const cardText = document.createElement("p");
     cardText.classList.add("card-text");
-    cardText.textContent =
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis necessitatibus nisi incidunt error sunt sapiente libero quo expedita at in!";
+    cardText.textContent = this.taskDescription;
 
     const container = document.createElement("div");
     container.classList.add("container");

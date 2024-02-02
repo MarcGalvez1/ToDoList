@@ -31,13 +31,21 @@ function sideMenu() {
     "text-start",
     "ms-5",
     "my-3",
+    "h5",
     "custom-link"
   );
   today.textContent = "Today";
   // Week
 
   const week = document.createElement("h5");
-  week.classList.add("text-light", "text-start", "ms-5", "my-3", "custom-link");
+  week.classList.add(
+    "text-light",
+    "text-start",
+    "ms-5",
+    "my-3",
+    "h5",
+    "custom-link"
+  );
   week.textContent = "This Week";
   // Horizontal Rule
   const horizontalRule = document.createElement("hr");
