@@ -1,5 +1,5 @@
-import { Project, ProjectList } from "./controls";
-const projectList = new ProjectList();
+import { Project } from "./controls";
+import { projectList } from "./sidemenu";
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
@@ -33,14 +33,14 @@ function eventListeners() {
         sideMenuSlide.classList.add("slide-in-out");
       }
     });
-
+    const projectsContainer = document.getElementById("projects-container");
     projectForm.onsubmit = (event) => {
       event.preventDefault();
       const projectName = document.getElementById("project-name");
-
       const currProject = new Project(projectName.value, false);
+
       projectList.addProject(currProject);
-      projectList.displayProjectList();
+      projectsContainer.appendChild(currProject.displayTag());
     };
 
     const menuList = document.getElementById("menu");
@@ -77,4 +77,4 @@ function eventListeners() {
     // });
   });
 }
-export default { eventListeners };
+export default eventListeners;

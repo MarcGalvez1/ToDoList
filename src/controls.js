@@ -5,15 +5,15 @@ class ProjectList {
   addProject(project) {
     this.projectArr.push(project);
   }
-  displayProjectList() {
-    console.log(this.projectArr);
-    const projectsContainer = document.getElementById("projects-container");
-    for (const project of this.projectArr) {
-      if (project.getDefault() === false) {
-        projectsContainer.appendChild(project.displayTag());
-      }
-    }
-  }
+  // displayProjectList() {
+  //   console.log(this.projectArr);
+  //   const projectsContainer = document.getElementById("projects-container");
+  //   for (const project of this.projectArr) {
+  //     if (project.getDefault() === false) {
+  //       projectsContainer.appendChild(project.displayTag());
+  //     }
+  //   }
+  // }
 }
 
 class Project {
@@ -28,8 +28,7 @@ class Project {
       "text-start",
       "ms-5",
       "my-3",
-      "custom-link",
-      "projects"
+      "custom-link"
     );
     if (this.name === "Home") {
       tag.classList.add("h1");
@@ -44,7 +43,7 @@ class Project {
 
     // Create the project tag
     const projectTag = this.displayDefaultTag();
-
+    projectTag.classList.add("projects");
     // Create the delete icon
     const deleteIconContainer = document.createElement("h5");
     deleteIconContainer.classList.add(
@@ -198,6 +197,5 @@ function createButton(text, btnClass, btnId, textClass) {
 
   return button;
 }
-// const projectList = new ProjectList();
 
 export { Project, Task, ProjectList };

@@ -1,5 +1,5 @@
-import { Project } from "./controls";
-// import { projectList } from "./controls";
+import { Project, ProjectList } from "./controls";
+const projectList = new ProjectList();
 function sideMenu() {
   const menuContainer = document.createElement("div");
   menuContainer.id = "menu";
@@ -20,17 +20,17 @@ function sideMenu() {
 
   // Menu list
   // Home
-  // const homeDefault = new Project("Home", true);
-  // // projectList.addProject(homeDefault);
-  // defaultsContainer.appendChild(homeDefault.displayTag());
-  // // Today
-  // const todayDefault = new Project("Today", true);
-  // // projectList.addProject(todayDefault);
-  // defaultsContainer.appendChild(todayDefault.displayTag());
-  // // Week
-  // const weekDefault = new Project("This Week", true);
-  // // projectList.addProject(weekDefault);
-  // defaultsContainer.appendChild(weekDefault.displayTag());
+  const homeDefault = new Project("Home", true);
+  projectList.addProject(homeDefault);
+  defaultsContainer.appendChild(homeDefault.displayTag());
+  // Today
+  const todayDefault = new Project("Today", true);
+  projectList.addProject(todayDefault);
+  defaultsContainer.appendChild(todayDefault.displayTag());
+  // Week
+  const weekDefault = new Project("This Week", true);
+  projectList.addProject(weekDefault);
+  defaultsContainer.appendChild(weekDefault.displayTag());
 
   // Horizontal Rule
   const horizontalRule = document.createElement("hr");
@@ -70,4 +70,5 @@ function sideMenu() {
   return menuContainer;
 }
 
+export { projectList };
 export default sideMenu;
