@@ -62,10 +62,11 @@ function eventListeners() {
         event.target.classList.add("h1", "active");
 
         // edit the size of the delete button
-        // const closestSibling = event.target.nextElementSibling;
-
-        // closestSibling.classList.remove("h5");
-        // closestSibling.classList.add("h1");
+        const closestSibling = event.target.nextElementSibling;
+        if (event.target.classList.contains("projects")) {
+          closestSibling.classList.remove("h5");
+          closestSibling.classList.add("h1");
+        }
       }
     });
     // const todosContainer = document.getElementById("todos");

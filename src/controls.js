@@ -19,7 +19,6 @@ class Project {
   constructor(name, description) {
     this.name = name;
     this.description = description;
-    // const taskList = [];
   }
   displayProjectTag() {
     const projectTagContainer = document.createElement("div");
