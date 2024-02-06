@@ -8,26 +8,22 @@ class ProjectList {
   displayProjectList() {
     console.log(this.projectArr);
     const projectsContainer = document.getElementById("projects-container");
-    projectsContainer.innerHTML = "";
     for (const project of this.projectArr) {
-      project.displayProjectTag();
+      if (project.getDefault() === false) {
+        projectsContainer.appendChild(project.displayTag());
+      }
     }
   }
 }
 
 class Project {
-  constructor(name, description) {
+  constructor(name, isDefault) {
     this.name = name;
-    this.description = description;
+    this.default = isDefault;
   }
-  displayProjectTag() {
-    const projectTagContainer = document.createElement("div");
-    projectTagContainer.classList.add("d-flex", "flex-row");
-
-    // Create the project tag
-    const projectTag = document.createElement("h5");
-    const projectsContainer = document.getElementById("projects-container");
-    projectTag.classList.add(
+  displayDefaultTag() {
+    const tag = document.createElement("h5");
+    tag.classList.add(
       "text-light",
       "text-start",
       "ms-5",
@@ -35,15 +31,19 @@ class Project {
       "custom-link",
       "projects"
     );
-    projectTag.innerText = this.name;
-    // Event listener to populate the tasks to the correct projects
-    projectTag.addEventListener("click", (event) => {
-      // const customLinksToggler = document.querySelectorAll(".custom-link");
-      // customLinksToggler.forEach((element) => {
-      //   element.classList.remove("h1", "active");
-      // });
-      // event.target.classList.add("h1", "active");
-    });
+    if (this.name === "Home") {
+      tag.classList.add("h1");
+    }
+    tag.innerText = this.name;
+    return tag;
+  }
+  displayProjectTag() {
+    // Contains the project tag and delete button
+    const projectTagContainer = document.createElement("div");
+    projectTagContainer.classList.add("d-flex", "flex-row");
+
+    // Create the project tag
+    const projectTag = this.displayDefaultTag();
 
     // Create the delete icon
     const deleteIconContainer = document.createElement("h5");
@@ -80,8 +80,23 @@ class Project {
     projectTagContainer.appendChild(projectTag);
     projectTagContainer.appendChild(deleteIconContainer);
 
-    projectsContainer.appendChild(projectTagContainer);
+    return projectTagContainer;
   }
+
+  displayTag() {
+    let tag;
+    if (this.default === true) {
+      tag = this.displayDefaultTag();
+    } else {
+      tag = this.displayProjectTag();
+    }
+    return tag;
+  }
+
+  getDefault() {
+    return this.default;
+  }
+
   getName() {
     return this.name;
   }
@@ -183,5 +198,6 @@ function createButton(text, btnClass, btnId, textClass) {
 
   return button;
 }
+// const projectList = new ProjectList();
 
-export { Project, ProjectList, Task };
+export { Project, Task, ProjectList };

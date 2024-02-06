@@ -1,3 +1,5 @@
+import { Project } from "./controls";
+// import { projectList } from "./controls";
 function sideMenu() {
   const menuContainer = document.createElement("div");
   menuContainer.id = "menu";
@@ -11,42 +13,25 @@ function sideMenu() {
     "slide-animation"
   );
 
+  // Container for default projects
+
+  const defaultsContainer = document.createElement("div");
+  defaultsContainer.id = "defaults-container";
+
   // Menu list
   // Home
-  const home = document.createElement("h5");
-  home.classList.add(
-    "text-light",
-    "text-start",
-    "h1",
-    "ms-5",
-    "my-3",
-    "custom-link",
-    "active"
-  );
-  home.textContent = "Home";
-  // Today
-  const today = document.createElement("h5");
-  today.classList.add(
-    "text-light",
-    "text-start",
-    "ms-5",
-    "my-3",
-    "h5",
-    "custom-link"
-  );
-  today.textContent = "Today";
-  // Week
+  // const homeDefault = new Project("Home", true);
+  // // projectList.addProject(homeDefault);
+  // defaultsContainer.appendChild(homeDefault.displayTag());
+  // // Today
+  // const todayDefault = new Project("Today", true);
+  // // projectList.addProject(todayDefault);
+  // defaultsContainer.appendChild(todayDefault.displayTag());
+  // // Week
+  // const weekDefault = new Project("This Week", true);
+  // // projectList.addProject(weekDefault);
+  // defaultsContainer.appendChild(weekDefault.displayTag());
 
-  const week = document.createElement("h5");
-  week.classList.add(
-    "text-light",
-    "text-start",
-    "ms-5",
-    "my-3",
-    "h5",
-    "custom-link"
-  );
-  week.textContent = "This Week";
   // Horizontal Rule
   const horizontalRule = document.createElement("hr");
   horizontalRule.classList.add("text-light");
@@ -77,9 +62,7 @@ function sideMenu() {
   projectsContainer.id = "projects-container";
   projectsContainer.innerText = "Hello";
 
-  menuContainer.appendChild(home);
-  menuContainer.appendChild(today);
-  menuContainer.appendChild(week);
+  menuContainer.appendChild(defaultsContainer);
   menuContainer.appendChild(horizontalRule);
   menuContainer.appendChild(buttonContainer);
   menuContainer.appendChild(projectsContainer);

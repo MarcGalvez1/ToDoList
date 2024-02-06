@@ -1,7 +1,6 @@
-import { Project, ProjectList, Task } from "./controls";
-
+import { Project, ProjectList } from "./controls";
+const projectList = new ProjectList();
 function eventListeners() {
-  const projectList = new ProjectList();
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
     const sideMenuSlide = document.getElementById("menu");
@@ -38,11 +37,8 @@ function eventListeners() {
     projectForm.onsubmit = (event) => {
       event.preventDefault();
       const projectName = document.getElementById("project-name");
-      const projectDescription = document.getElementById("project-description");
-      const currProject = new Project(
-        projectName.value,
-        projectDescription.value
-      );
+
+      const currProject = new Project(projectName.value, false);
       projectList.addProject(currProject);
       projectList.displayProjectList();
     };
@@ -72,13 +68,13 @@ function eventListeners() {
     // const todosContainer = document.getElementById("todos");
     // const taskTest = new Task("Hello", "World", "12");
     // todosContainer.appendChild(taskTest.createTask());
-    const newTaskForm = document.getElementById("new-task-form");
-    newTaskForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const taskName = document.getElementById("task-name").value;
-      const taskDescription = document.getElementById("task-description").value;
-      const taskDueDate = document.getElementById("due-date");
-    });
+    // const newTaskForm = document.getElementById("new-task-form");
+    // newTaskForm.addEventListener("submit", (event) => {
+    //   event.preventDefault();
+    //   const taskName = document.getElementById("task-name").value;
+    //   const taskDescription = document.getElementById("task-description").value;
+    //   const taskDueDate = document.getElementById("due-date");
+    // });
   });
 }
-export default eventListeners;
+export default { eventListeners };

@@ -66,26 +66,6 @@ function projectModal() {
   projectNameContainer.appendChild(projectNameLabel);
   projectNameContainer.appendChild(projectNameInput);
 
-  // Container for project description
-  const projectDescContainer = document.createElement("div");
-  projectDescContainer.classList.add("mb-3");
-
-  // form label for project description
-  const projectDescLabel = document.createElement("label");
-  projectDescLabel.htmlFor = "project-description";
-  projectDescLabel.classList.add("form-label");
-  projectDescLabel.innerText = "Project Description:";
-
-  // Form input for project Description
-  const projectDescriptionInput = document.createElement("textarea");
-  projectDescriptionInput.rows = "3";
-  projectDescriptionInput.classList.add("form-control");
-  projectDescriptionInput.id = "project-description";
-  projectDescriptionInput.placeholder = "";
-  // Appends children of project description container
-  projectDescContainer.appendChild(projectDescLabel);
-  projectDescContainer.appendChild(projectDescriptionInput);
-
   const submitContainer = document.createElement("div");
   submitContainer.classList.add("col-12");
 
@@ -98,7 +78,6 @@ function projectModal() {
 
   // Appends the child elements of modal form
   newProjectForm.appendChild(projectNameContainer);
-  newProjectForm.appendChild(projectDescContainer);
   newProjectForm.appendChild(submitContainer);
 
   // Appends form to body
