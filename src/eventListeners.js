@@ -40,7 +40,10 @@ function eventListeners() {
       const currProject = new Project(projectName.value, false);
 
       projectList.addProject(currProject);
-      projectsContainer.appendChild(currProject.displayTag());
+      projectList.displayProjectList();
+      if (!currProject.getRepeat()) {
+        projectsContainer.appendChild(currProject.displayTag());
+      }
     };
 
     const menuList = document.getElementById("menu");

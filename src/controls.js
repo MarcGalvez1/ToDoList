@@ -1,25 +1,32 @@
 class ProjectList {
   constructor() {
-    this.projectArr = [];
+    this.projectArr = new Map();
   }
   addProject(project) {
-    this.projectArr.push(project);
+    if (!this.projectArr.has(project.getName())) {
+      this.projectArr.set(project.getName(), project);
+      project.setRepeat(false);
+    } else {
+      console.log("Can not add existing project");
+      project.setRepeat(true);
+    }
   }
-  // displayProjectList() {
-  //   console.log(this.projectArr);
-  //   const projectsContainer = document.getElementById("projects-container");
-  //   for (const project of this.projectArr) {
-  //     if (project.getDefault() === false) {
-  //       projectsContainer.appendChild(project.displayTag());
-  //     }
-  //   }
-  // }
+  displayProjectList() {
+    console.log(this.projectArr);
+    // const projectsContainer = document.getElementById("projects-container");
+    // for (const project of this.projectArr) {
+    //   if (project.getDefault() === false) {
+    //     projectsContainer.appendChild(project.displayTag());
+    //   }
+    // }
+  }
 }
 
 class Project {
   constructor(name, isDefault) {
     this.name = name;
     this.default = isDefault;
+    this.isRepeat = false;
   }
   displayDefaultTag() {
     const tag = document.createElement("h5");
@@ -84,12 +91,23 @@ class Project {
 
   displayTag() {
     let tag;
+    // let tagContainer;
     if (this.default === true) {
       tag = this.displayDefaultTag();
+      // tagContainer = document.getElementById("defaults-container");
     } else {
       tag = this.displayProjectTag();
+      // tagContainer = document.getElementById("projects-container");
     }
+    // tagContainer.appendChild(tag);
     return tag;
+  }
+
+  setRepeat(isRepeat) {
+    this.isRepeat = isRepeat;
+  }
+  getRepeat() {
+    return this.isRepeat;
   }
 
   getDefault() {
