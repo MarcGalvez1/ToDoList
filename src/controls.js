@@ -1,3 +1,4 @@
+import { projectList } from "./sidemenu";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
@@ -9,6 +10,12 @@ class ProjectList {
     } else {
       console.log("Can not add existing project");
       project.setRepeat(true);
+    }
+  }
+  removeProject(projectName) {
+    if (this.projectArr.has(projectName)) {
+      this.projectArr.delete(projectName);
+      console.log(this.projectArr);
     }
   }
   displayProjectList() {
@@ -39,6 +46,7 @@ class Project {
     );
     if (this.name === "Home") {
       tag.classList.add("h1");
+      tag.classList.add("active");
     }
     tag.innerText = this.name;
     return tag;
@@ -47,6 +55,7 @@ class Project {
     // Contains the project tag and delete button
     const projectTagContainer = document.createElement("div");
     projectTagContainer.classList.add("d-flex", "flex-row");
+    projectTagContainer.id = this.id;
 
     // Create the project tag
     const projectTag = this.displayDefaultTag();
@@ -64,7 +73,9 @@ class Project {
     const deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid", "fa-trash", "del-icon");
     deleteIcon.addEventListener("click", () => {
-      console.log("delete");
+      const parentContainer = document.getElementById("projects-container");
+      parentContainer.removeChild(projectTagContainer);
+      projectList.removeProject(this.name);
     });
 
     // event listeners to show hide the delete icon
@@ -116,6 +127,9 @@ class Project {
 
   getName() {
     return this.name;
+  }
+  getId() {
+    return this.id;
   }
 }
 
