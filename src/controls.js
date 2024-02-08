@@ -21,18 +21,12 @@ class ProjectList {
   }
   displayProjectList() {
     console.log(this.projectArr);
-    // const projectsContainer = document.getElementById("projects-container");
-    // for (const project of this.projectArr) {
-    //   if (project.getDefault() === false) {
-    //     projectsContainer.appendChild(project.displayTag());
-    //   }
-    // }
   }
   setActiveProject(projectKey) {
     this.activeProject = projectKey;
   }
   getActiveProject() {
-    return this.activeProject;
+    return this.projectArr.get(this.activeProject);
   }
 }
 
@@ -41,6 +35,7 @@ class Project {
     this.name = name;
     this.default = isDefault;
     this.isRepeat = false;
+    this.taskList = new Map();
   }
   displayDefaultTag() {
     const tag = document.createElement("h5");
@@ -125,6 +120,15 @@ class Project {
     }
     // tagContainer.appendChild(tag);
     return tag;
+  }
+
+  addTask(task) {
+    if (!this.taskList.has(task.getName())) {
+      this.taskList.set(task.getName(), task);
+      console.log(this.taskList);
+    } else {
+      console.log("Tasks can not have the same name in the same project");
+    }
   }
 
   setRepeat(isRepeat) {
@@ -222,6 +226,10 @@ class Task {
     taskContainer.appendChild(card);
 
     return taskContainer;
+  }
+
+  getName() {
+    return this.taskName;
   }
 }
 

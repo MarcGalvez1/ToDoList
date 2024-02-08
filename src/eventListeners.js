@@ -1,4 +1,4 @@
-import { Project } from "./controls";
+import { Project, Task } from "./controls";
 import { projectList } from "./sidemenu";
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
@@ -74,16 +74,17 @@ function eventListeners() {
       }
     });
 
-    // const todosContainer = document.getElementById("todos");
-    // const taskTest = new Task("Hello", "World", "12");
-    // todosContainer.appendChild(taskTest.createTask());
-    // const newTaskForm = document.getElementById("new-task-form");
-    // newTaskForm.addEventListener("submit", (event) => {
-    //   event.preventDefault();
-    //   const taskName = document.getElementById("task-name").value;
-    //   const taskDescription = document.getElementById("task-description").value;
-    //   const taskDueDate = document.getElementById("due-date");
-    // });
+    const taskFormSubmit = document.getElementById("new-task-form");
+    taskFormSubmit.onsubmit = (event) => {
+      event.preventDefault();
+      const currProject = projectList.getActiveProject();
+
+      const taskName = document.getElementById("task-name").value;
+      const taskDescription = document.getElementById("task-description").value;
+      const taskDue = document.getElementById("due-date").value;
+      const currTask = new Task(taskName, taskDescription, taskDue);
+      currProject.addTask(currTask);
+    };
   });
 }
 export default eventListeners;
