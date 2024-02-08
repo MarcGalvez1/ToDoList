@@ -66,6 +66,11 @@ function eventListeners() {
           closestSibling.classList.remove("h5");
           closestSibling.classList.add("h1");
         }
+
+        // set the active project
+        const activeLink = event.target.innerText;
+        projectList.setActiveProject(activeLink);
+        console.log(projectList.getActiveProject());
       }
     });
 

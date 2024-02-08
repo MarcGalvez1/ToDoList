@@ -2,6 +2,7 @@ import { projectList } from "./sidemenu";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
+    this.activeProject = "Home";
   }
   addProject(project) {
     if (!this.projectArr.has(project.getName())) {
@@ -27,6 +28,12 @@ class ProjectList {
     //   }
     // }
   }
+  setActiveProject(projectKey) {
+    this.activeProject = projectKey;
+  }
+  getActiveProject() {
+    return this.activeProject;
+  }
 }
 
 class Project {
@@ -49,13 +56,13 @@ class Project {
       tag.classList.add("active");
     }
     tag.innerText = this.name;
+
     return tag;
   }
   displayProjectTag() {
     // Contains the project tag and delete button
     const projectTagContainer = document.createElement("div");
     projectTagContainer.classList.add("d-flex", "flex-row");
-    projectTagContainer.id = this.id;
 
     // Create the project tag
     const projectTag = this.displayDefaultTag();
@@ -73,8 +80,14 @@ class Project {
     const deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa-solid", "fa-trash", "del-icon");
     deleteIcon.addEventListener("click", () => {
+      // Remove Dome Element For the deleted project
       const parentContainer = document.getElementById("projects-container");
       parentContainer.removeChild(projectTagContainer);
+      if (this.name === projectList.getActiveProject()) {
+        // Ensure that the active element is valid and set to the default location "Home"
+        projectList.setActiveProject("Home");
+      }
+      // Remove project frome projectList
       projectList.removeProject(this.name);
     });
 
