@@ -128,9 +128,6 @@ class Project {
   getName() {
     return this.name;
   }
-  getId() {
-    return this.id;
-  }
 }
 
 class Task {
