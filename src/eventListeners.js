@@ -36,14 +36,16 @@ function eventListeners() {
     const projectsContainer = document.getElementById("projects-container");
     projectForm.onsubmit = (event) => {
       event.preventDefault();
-      const projectName = document.getElementById("project-name");
-      const currProject = new Project(projectName.value, false);
+      const projectName = document.getElementById("project-name").value;
+      const currProject = new Project(projectName, false);
 
       projectList.addProject(currProject);
       projectList.displayProjectList();
       if (!currProject.getRepeat()) {
         projectsContainer.appendChild(currProject.displayTag());
       }
+
+      document.getElementById("project-name").value = "";
     };
 
     const menuList = document.getElementById("menu");
@@ -84,6 +86,10 @@ function eventListeners() {
       const taskDue = document.getElementById("due-date").value;
       const currTask = new Task(taskName, taskDescription, taskDue);
       currProject.addTask(currTask);
+
+      document.getElementById("task-name").value = "";
+      document.getElementById("task-description").value = "";
+      document.getElementById("due-date").value = "";
     };
   });
 }
