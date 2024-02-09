@@ -85,7 +85,10 @@ function eventListeners() {
       const taskDescription = document.getElementById("task-description").value;
       const taskDue = document.getElementById("due-date").value;
       const currTask = new Task(taskName, taskDescription, taskDue);
+      const taskContainer = document.getElementById("task-list-container");
+
       currProject.addTask(currTask);
+      taskContainer.appendChild(currTask.createTask());
 
       document.getElementById("task-name").value = "";
       document.getElementById("task-description").value = "";

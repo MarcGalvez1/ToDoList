@@ -154,22 +154,18 @@ class Task {
     this.taskDueDate = taskDueDate;
   }
   createTask() {
-    // Main Container
-    const taskContainer = document.createElement("div");
-    taskContainer.classList.add("row");
-
     // Card Container
     const card = document.createElement("div");
     card.classList.add(
       "card",
       "col-12",
-      "col-sm-6",
-      "col-md-8",
-      "col-lg-5",
-      "col-xl-6",
-      "col-xxl-3",
+      "col-md-12",
+      "col-lg-12",
+      "col-xl-12",
+      "col-xxl-6",
       "my-2",
-      "ms-3"
+      "mx-2",
+      "p-2"
     );
 
     // Card header
@@ -223,9 +219,8 @@ class Task {
     cardBody.appendChild(container);
 
     card.appendChild(cardBody);
-    taskContainer.appendChild(card);
 
-    return taskContainer;
+    return card;
   }
 
   getName() {

@@ -26,7 +26,19 @@ todosContainer.classList.add(
   "bg-info",
   "slide-animation"
 );
+
+const taskListContainer = document.createElement("div");
+taskListContainer.id = "task-list-container";
+taskListContainer.classList.add(
+  "d-flex",
+  "flex-wrap",
+  "justify-content-center",
+  "align-items-center",
+  "mx-auto"
+);
+
 todosContainer.appendChild(todos());
+todosContainer.appendChild(taskListContainer);
 todosContainer.appendChild(projectModal());
 todosContainer.appendChild(taskModal());
 
