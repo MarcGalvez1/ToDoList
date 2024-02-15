@@ -92,7 +92,10 @@ function eventListeners() {
       const taskContainer = document.getElementById("task-list-container");
 
       currProject.addTask(currTask);
-      taskContainer.appendChild(currTask.createTask());
+
+      if (!currTask.getIsRepeat()) {
+        taskContainer.appendChild(currTask.createTask());
+      }
 
       document.getElementById("task-name").value = "";
       document.getElementById("task-description").value = "";

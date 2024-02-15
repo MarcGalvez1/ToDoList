@@ -123,10 +123,12 @@ class Project {
   }
 
   addTask(task) {
+    // Add task to task list only if not repeated
     if (!this.taskList.has(task.getName())) {
       this.taskList.set(task.getName(), task);
       console.log(this.taskList);
     } else {
+      task.setIsRepeat(true);
       console.log("Tasks can not have the same name in the same project");
     }
   }
@@ -164,6 +166,7 @@ class Task {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
     this.taskDueDate = taskDueDate;
+    this.isRepeat = false;
   }
   createTask() {
     // Card Container
@@ -233,6 +236,13 @@ class Task {
     card.appendChild(cardBody);
 
     return card;
+  }
+
+  setIsRepeat(repeated) {
+    this.isRepeat = repeated;
+  }
+  getIsRepeat() {
+    return this.isRepeat;
   }
 
   getName() {
