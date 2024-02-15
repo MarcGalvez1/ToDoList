@@ -72,7 +72,11 @@ function eventListeners() {
         // set the active project
         const activeLink = event.target.innerText;
         projectList.setActiveProject(activeLink);
-        console.log(projectList.getActiveProject());
+
+        // display the tasks assosciated with the correct projects
+        const currProject = projectList.getActiveProject();
+        console.log(currProject.getTask());
+        currProject.displayAllTasks();
       }
     });
 

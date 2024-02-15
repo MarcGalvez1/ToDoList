@@ -131,6 +131,15 @@ class Project {
     }
   }
 
+  displayAllTasks() {
+    const tasksContainer = document.getElementById("task-list-container");
+    tasksContainer.innerHTML = "";
+    console.log("Calls display all tasks");
+    this.taskList.forEach((task, key) => {
+      tasksContainer.appendChild(task.createTask());
+    });
+  }
+
   setRepeat(isRepeat) {
     this.isRepeat = isRepeat;
   }
@@ -140,6 +149,9 @@ class Project {
 
   getDefault() {
     return this.default;
+  }
+  getTask() {
+    return this.taskList;
   }
 
   getName() {
