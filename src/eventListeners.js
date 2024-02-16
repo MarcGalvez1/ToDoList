@@ -121,6 +121,7 @@ function eventListeners() {
       document.getElementById("task-name").value = "";
       document.getElementById("task-description").value = "";
       document.getElementById("due-date").value = "";
+      document.getElementById("project-choice").value = "Home";
     };
   });
 }
