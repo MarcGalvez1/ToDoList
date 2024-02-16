@@ -19,6 +19,9 @@ class ProjectList {
       console.log(this.projectArr);
     }
   }
+  searchProject(projectName) {
+    return this.projectArr.get(projectName);
+  }
   displayProjectList() {
     console.log(this.projectArr);
   }
@@ -27,6 +30,9 @@ class ProjectList {
   }
   getActiveProject() {
     return this.projectArr.get(this.activeProject);
+  }
+  getProjectArr() {
+    return this.projectArr;
   }
 }
 

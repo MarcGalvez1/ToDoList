@@ -1,3 +1,4 @@
+import { projectList } from "./sidemenu";
 function taskModal() {
   // Contains the modal
   const modalContainer = document.createElement("div");
@@ -86,6 +87,7 @@ function taskModal() {
   taskDescContainer.appendChild(taskDescLabel);
   taskDescContainer.appendChild(taskDescriptionInput);
 
+  // Create the due date portion of the form
   const dueDateContainer = document.createElement("div");
   dueDateContainer.classList.add("mb-3");
 
@@ -103,6 +105,29 @@ function taskModal() {
   dueDateContainer.appendChild(dueDateLabel);
   dueDateContainer.appendChild(dueDateInput);
 
+  // Choices for where to add projects
+  const projectListContainer = document.createElement("div");
+  projectListContainer.classList.add("mb-3");
+
+  const projectListLabel = document.createElement("label");
+  projectListLabel.htmlFor = "project-choice";
+  projectListContainer.classList.add("form-label");
+
+  const projectListInput = document.createElement("select");
+  projectListInput.id = "project-choice";
+  projectListInput.classList.add("form-select");
+  // projectList.getProjectArr().forEach((value, key) => {
+  //   const option = document.createElement("option");
+  //   option.value = key;
+  //   option.text = key;
+  //   projectListInput.appendChild(option);
+  // });
+
+  projectListContainer.appendChild(projectListLabel);
+  projectListContainer.appendChild(projectListInput);
+
+  // Submit button
+
   const submitContainer = document.createElement("div");
   submitContainer.classList.add("col-12");
 
@@ -117,6 +142,7 @@ function taskModal() {
   newTaskForm.appendChild(taskNameContainer);
   newTaskForm.appendChild(taskDescContainer);
   newTaskForm.appendChild(dueDateContainer);
+  newTaskForm.appendChild(projectListContainer);
   newTaskForm.appendChild(submitContainer);
 
   // Appends all child elements to modal body

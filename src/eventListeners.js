@@ -8,6 +8,17 @@ function eventListeners() {
     const iconToggle = document.getElementById("icon");
     const projectForm = document.getElementById("new-project-form");
 
+    // Creates the initial project list for the tasks form
+    const projectListInput = document.getElementById("project-choice");
+    projectList.getProjectArr().forEach((value, key) => {
+      const option = document.createElement("option");
+      if (key !== "Today" && key !== "This Week") {
+        option.value = key;
+        option.text = key;
+        projectListInput.appendChild(option);
+      }
+    });
+
     iconToggle.addEventListener("click", () => {
       //Allows the menu to slide in and out when the icon is clicked
       sideMenuSlide.classList.toggle("slide-in-out");
@@ -34,6 +45,7 @@ function eventListeners() {
       }
     });
     const projectsContainer = document.getElementById("projects-container");
+
     projectForm.onsubmit = (event) => {
       event.preventDefault();
       const projectName = document.getElementById("project-name").value;
@@ -43,6 +55,12 @@ function eventListeners() {
       projectList.displayProjectList();
       if (!currProject.getRepeat()) {
         projectsContainer.appendChild(currProject.displayTag());
+
+        // Add the current project to the project list selection in the task form
+        const option = document.createElement("option");
+        option.value = currProject.getName();
+        option.text = currProject.getName();
+        projectListInput.appendChild(option);
       }
 
       document.getElementById("project-name").value = "";
@@ -83,17 +101,20 @@ function eventListeners() {
     const taskFormSubmit = document.getElementById("new-task-form");
     taskFormSubmit.onsubmit = (event) => {
       event.preventDefault();
-      const currProject = projectList.getActiveProject();
 
       const taskName = document.getElementById("task-name").value;
       const taskDescription = document.getElementById("task-description").value;
       const taskDue = document.getElementById("due-date").value;
+      const projectListVal = document.getElementById("project-choice").value;
       const currTask = new Task(taskName, taskDescription, taskDue);
       const taskContainer = document.getElementById("task-list-container");
-
+      const currProject = projectList.searchProject(projectListVal);
       currProject.addTask(currTask);
 
-      if (!currTask.getIsRepeat()) {
+      if (
+        !currTask.getIsRepeat() &&
+        projectList.getActiveProject().getName() === currProject.getName()
+      ) {
         taskContainer.appendChild(currTask.createTask());
       }
 
