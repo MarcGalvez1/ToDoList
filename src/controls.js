@@ -173,6 +173,7 @@ class Task {
     this.taskDescription = taskDescription;
     this.taskDueDate = taskDueDate;
     this.isRepeat = false;
+    this.isComplete = false;
   }
   createTask() {
     // Card Container
@@ -240,6 +241,30 @@ class Task {
     cardBody.appendChild(container);
 
     card.appendChild(cardBody);
+
+    // Event listeners for buttons
+    // Complete
+    completeBtn.addEventListener("click", () => {
+      if (!this.isComplete) {
+        cardTitle.classList.add("text-decoration-line-through");
+        cardSubtitle.classList.add("text-decoration-line-through");
+        cardText.classList.add("text-decoration-line-through");
+
+        completeBtn.classList.remove("btn-success");
+        completeBtn.classList.add("btn-warning", "text-light", "display-2");
+        completeBtn.firstChild.innerText = "Incomplete";
+        this.isComplete = true;
+      } else {
+        cardTitle.classList.remove("text-decoration-line-through");
+        cardSubtitle.classList.remove("text-decoration-line-through");
+        cardText.classList.remove("text-decoration-line-through");
+
+        completeBtn.classList.remove("btn-warning");
+        completeBtn.classList.add("btn-success");
+        completeBtn.firstChild.innerText = "Complete";
+        this.isComplete = false;
+      }
+    });
 
     return card;
   }
