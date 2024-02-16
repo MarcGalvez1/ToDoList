@@ -139,6 +139,11 @@ class Project {
     }
   }
 
+  removeTask(taskName) {
+    this.taskList.delete(taskName);
+    console.log(this.taskList);
+  }
+
   displayAllTasks() {
     const tasksContainer = document.getElementById("task-list-container");
     tasksContainer.innerHTML = "";
@@ -168,10 +173,11 @@ class Project {
 }
 
 class Task {
-  constructor(taskName, taskDescription, taskDueDate) {
+  constructor(taskName, taskDescription, taskDueDate, projectAssosciation) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
     this.taskDueDate = taskDueDate;
+    this.projectAssosciation = projectAssosciation;
     this.isRepeat = false;
     this.isComplete = false;
   }
@@ -266,6 +272,13 @@ class Task {
       }
     });
 
+    // Delete Btn
+    deleteBtn.addEventListener("click", () => {
+      // Remove the DOM element for the correct card and remove from the project task list
+      card.remove();
+      const currProject = projectList.searchProject(this.projectAssosciation);
+      currProject.removeTask(this.taskName);
+    });
     return card;
   }
 

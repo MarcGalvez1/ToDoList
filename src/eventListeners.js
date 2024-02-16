@@ -106,7 +106,12 @@ function eventListeners() {
       const taskDescription = document.getElementById("task-description").value;
       const taskDue = document.getElementById("due-date").value;
       const projectListVal = document.getElementById("project-choice").value;
-      const currTask = new Task(taskName, taskDescription, taskDue);
+      const currTask = new Task(
+        taskName,
+        taskDescription,
+        taskDue,
+        projectListVal
+      );
       const taskContainer = document.getElementById("task-list-container");
       const currProject = projectList.searchProject(projectListVal);
       currProject.addTask(currTask);
