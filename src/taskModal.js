@@ -1,4 +1,3 @@
-import { projectList } from "./sidemenu";
 function taskModal() {
   // Contains the modal
   const modalContainer = document.createElement("div");

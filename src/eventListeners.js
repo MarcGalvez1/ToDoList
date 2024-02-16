@@ -128,6 +128,15 @@ function eventListeners() {
       document.getElementById("due-date").value = "";
       document.getElementById("project-choice").value = "Home";
     };
+
+    const taskModal = document.getElementById("new-task-modal");
+    taskModal.addEventListener("hidden.bs.modal", () => {
+      // Clear task form on close of modal
+      document.getElementById("task-name").value = "";
+      document.getElementById("task-description").value = "";
+      document.getElementById("due-date").value = "";
+      document.getElementById("project-choice").value = "Home";
+    });
   });
 }
 export default eventListeners;

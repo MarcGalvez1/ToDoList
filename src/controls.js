@@ -227,16 +227,9 @@ class Task {
       "btn-success",
       "complete-task"
     );
-    const editBtn = createButton(
-      "Edit",
-      "btn-warning",
-      "edit-task",
-      "text-light"
-    );
-    const deleteBtn = createButton("Delete", "btn-danger", "delete-task");
 
+    const deleteBtn = createButton("Delete", "btn-danger", "delete-task");
     row.appendChild(completeBtn);
-    row.appendChild(editBtn);
     row.appendChild(deleteBtn);
 
     container.appendChild(row);
