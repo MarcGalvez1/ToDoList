@@ -117,15 +117,12 @@ function eventListeners() {
       const currProject = projectList.searchProject(projectListVal);
       currProject.addTask(currTask);
 
-      if (
-        !currTask.getIsRepeat() &&
-        projectList.getActiveProject().getName() === currProject.getName()
-      ) {
+      if (!currTask.getIsRepeat()) {
         switch (projectList.getActiveProject().getName()) {
           case "Home":
             taskContainer.innerHTML = "";
+            console.log(allTasksList.getAllTaskList());
             for (const task of allTasksList.getAllTaskList()) {
-              console.log(projectList.getActiveProject());
               taskContainer.appendChild(task.createTask());
             }
             break;
