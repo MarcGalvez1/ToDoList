@@ -1,4 +1,6 @@
+import { sortBy } from "lodash";
 import { projectList } from "./sidemenu";
+import { parse, format } from "date-fns";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
@@ -33,6 +35,34 @@ class ProjectList {
   }
   getProjectArr() {
     return this.projectArr;
+  }
+}
+
+class allTasks {
+  constructor() {
+    this.allTasksList = [];
+    this.currIndex = 0;
+    this.sortedArray = [];
+  }
+  addTask(task) {
+    this.allTasksList.push(task);
+    task.setTaskIndex(this.currIndex);
+    this.currIndex += 1;
+    this.sortArray();
+    console.log("task list: " + this.allTasksList);
+  }
+  removeTask(removeIndex) {
+    this.allTasksList.splice(removeIndex);
+    this.currIndex -= 1;
+    this.sortArray();
+    console.log("task list: " + this.allTasksList);
+  }
+  sortArray() {
+    this.sortedArray = sortBy(this.allTasksList, (task) => task.getDate());
+  }
+  getAllTaskList() {
+    console.log(this.sortedArray);
+    return this.sortedArray;
   }
 }
 
@@ -132,6 +162,7 @@ class Project {
     // Add task to task list only if not repeated
     if (!this.taskList.has(task.getName())) {
       this.taskList.set(task.getName(), task);
+      allTasksList.addTask(task);
       console.log(this.taskList);
     } else {
       task.setIsRepeat(true);
@@ -147,10 +178,19 @@ class Project {
   displayAllTasks() {
     const tasksContainer = document.getElementById("task-list-container");
     tasksContainer.innerHTML = "";
-    console.log("Calls display all tasks");
-    this.taskList.forEach((task, key) => {
-      tasksContainer.appendChild(task.createTask());
-    });
+    switch (this.name) {
+      case "Home":
+        for (const task of allTasksList.getAllTaskList()) {
+          console.log(task);
+          tasksContainer.appendChild(task.createTask());
+        }
+        break;
+      default:
+        this.taskList.forEach((task, key) => {
+          tasksContainer.appendChild(task.createTask());
+        });
+        break;
+    }
   }
 
   setRepeat(isRepeat) {
@@ -176,8 +216,9 @@ class Task {
   constructor(taskName, taskDescription, taskDueDate, projectAssosciation) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
-    this.taskDueDate = taskDueDate;
+    this.taskDueDate = format(taskDueDate, "MM/dd/yyyy", new Date());
     this.projectAssosciation = projectAssosciation;
+    this.taskIndex = 0;
     this.isRepeat = false;
     this.isComplete = false;
   }
@@ -275,13 +316,22 @@ class Task {
     return card;
   }
 
+  setTaskIndex(index) {
+    this.taskIndex = index;
+  }
+  getTaskIndex() {
+    return this.taskIndex;
+  }
+
   setIsRepeat(repeated) {
     this.isRepeat = repeated;
   }
   getIsRepeat() {
     return this.isRepeat;
   }
-
+  getDate() {
+    return this.taskDueDate;
+  }
   getName() {
     return this.taskName;
   }
@@ -301,5 +351,7 @@ function createButton(text, btnClass, btnId, textClass) {
 
   return button;
 }
+
+const allTasksList = new allTasks();
 
 export { Project, Task, ProjectList };
