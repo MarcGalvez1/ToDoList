@@ -312,6 +312,7 @@ class Task {
       card.remove();
       const currProject = projectList.searchProject(this.projectAssosciation);
       currProject.removeTask(this.taskName);
+      allTasksList.removeTask(this.taskIndex);
     });
     return card;
   }
