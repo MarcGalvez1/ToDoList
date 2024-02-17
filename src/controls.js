@@ -118,6 +118,10 @@ class Project {
         // Ensure that the active element is valid and set to the default location "Home"
         projectList.setActiveProject("Home");
       }
+      // Remove all tasks from this project from the AllTasksList
+      this.taskList.forEach((task, key) => {
+        allTasksList.removeTask(task.getTaskIndex());
+      });
       // Remove project frome projectList
       projectList.removeProject(this.name);
     });
