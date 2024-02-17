@@ -1,6 +1,6 @@
 import { sortBy } from "lodash";
 import { projectList } from "./sidemenu";
-import { parse, format } from "date-fns";
+import { format, parse } from "date-fns";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
@@ -220,7 +220,8 @@ class Task {
   constructor(taskName, taskDescription, taskDueDate, projectAssosciation) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
-    this.taskDueDate = format(taskDueDate, "MM/dd/yyyy", new Date());
+    this.parseDate = parse(taskDueDate, "yyyy-MM-dd", new Date());
+    this.taskDueDate = format(this.parseDate, "MM/dd/yyyy");
     this.projectAssosciation = projectAssosciation;
     this.taskIndex = 0;
     this.isRepeat = false;
@@ -359,4 +360,4 @@ function createButton(text, btnClass, btnId, textClass) {
 
 const allTasksList = new allTasks();
 
-export { Project, Task, ProjectList };
+export { Project, Task, ProjectList, allTasksList };

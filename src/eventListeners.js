@@ -1,5 +1,6 @@
 import { Project, Task } from "./controls";
 import { projectList } from "./sidemenu";
+import { allTasksList } from "./controls";
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
@@ -120,7 +121,18 @@ function eventListeners() {
         !currTask.getIsRepeat() &&
         projectList.getActiveProject().getName() === currProject.getName()
       ) {
-        taskContainer.appendChild(currTask.createTask());
+        switch (projectList.getActiveProject().getName()) {
+          case "Home":
+            taskContainer.innerHTML = "";
+            for (const task of allTasksList.getAllTaskList()) {
+              console.log(projectList.getActiveProject());
+              taskContainer.appendChild(task.createTask());
+            }
+            break;
+          default:
+            taskContainer.appendChild(currTask.createTask());
+            break;
+        }
       }
 
       document.getElementById("task-name").value = "";
