@@ -132,6 +132,12 @@ function eventListeners() {
               taskContainer.appendChild(task.createTask());
             }
             break;
+          case "This Week":
+            taskContainer.innerHTML = "";
+            for (const task of allTasksList.makeThisWeek()) {
+              taskContainer.appendChild(task.createTask());
+            }
+            break;
           default:
             taskContainer.appendChild(currTask.createTask());
             break;
