@@ -126,6 +126,12 @@ function eventListeners() {
               taskContainer.appendChild(task.createTask());
             }
             break;
+          case "Today":
+            taskContainer.innerHTML = "";
+            for (const task of allTasksList.makeToday()) {
+              taskContainer.appendChild(task.createTask());
+            }
+            break;
           default:
             taskContainer.appendChild(currTask.createTask());
             break;

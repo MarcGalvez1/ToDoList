@@ -1,6 +1,6 @@
 import { sortBy } from "lodash";
 import { projectList } from "./sidemenu";
-import { format, parse } from "date-fns";
+import { format, parse, isToday } from "date-fns";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
@@ -45,6 +45,7 @@ class allTasks {
     this.sortedArray = [];
   }
   addTask(task) {
+    // All tasks
     this.allTasksList.push(task);
     task.setTaskIndex(this.currIndex);
     this.currIndex += 1;
@@ -59,6 +60,15 @@ class allTasks {
   }
   sortArray() {
     this.sortedArray = sortBy(this.allTasksList, (task) => task.getDate());
+  }
+  makeToday() {
+    const todayArray = [];
+    for (const task of this.sortedArray) {
+      if (isToday(new Date(task.getDate()))) {
+        todayArray.push(task);
+      }
+    }
+    return todayArray;
   }
   getAllTaskList() {
     console.log(this.sortedArray);
@@ -186,6 +196,11 @@ class Project {
       case "Home":
         for (const task of allTasksList.getAllTaskList()) {
           console.log(task);
+          tasksContainer.appendChild(task.createTask());
+        }
+        break;
+      case "Today":
+        for (const task of allTasksList.makeToday()) {
           tasksContainer.appendChild(task.createTask());
         }
         break;
