@@ -1,7 +1,7 @@
 import { sortBy } from "lodash";
 import { projectList } from "./sidemenu";
 import { format, parse, isToday, isThisWeek } from "date-fns";
-import saveToLocalStorage from "./localStorageMGT";
+import { saveToLocalStorage, loadFromLocalStorage } from "./localStorageMGT";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
@@ -452,7 +452,9 @@ function createButton(text, btnClass, btnId, textClass) {
 
   return button;
 }
-
+// const storedAllTasksList = loadFromLocalStorage("allTasksList");
 const allTasksList = new allTasks();
-
+// storedAllTasksList
+// ? allTasks.deserialize(storedAllTasksList)
+// : new allTasks();
 export { Project, Task, ProjectList, allTasksList };

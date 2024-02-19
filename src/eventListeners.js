@@ -1,7 +1,7 @@
 import { Project, Task } from "./controls";
 import { projectList } from "./sidemenu";
 import { allTasksList } from "./controls";
-import saveToLocalStorage from "./localStorageMGT";
+import { saveToLocalStorage, loadFromLocalStorage } from "./localStorageMGT";
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
@@ -45,6 +45,16 @@ function eventListeners() {
       } else {
         sideMenuSlide.classList.add("slide-in-out");
       }
+
+      const defaultMenu = document.getElementById("defaults-container");
+      const projectsMenu = document.getElementById * "projects-container";
+      projectList.getProjectArr.forEach((project, key) => {
+        if (key === "Home" || key === "Today" || key === "This Week") {
+          defaultMenu.appendChild(project.displayTag());
+        } else {
+          projectsMenu.appendChild(project.displayTag());
+        }
+      });
     });
     const projectsContainer = document.getElementById("projects-container");
 
