@@ -1,6 +1,7 @@
 import { sortBy } from "lodash";
 import { projectList } from "./sidemenu";
 import { format, parse, isToday, isThisWeek } from "date-fns";
+import saveToLocalStorage from "./localStorageMGT";
 class ProjectList {
   constructor() {
     this.projectArr = new Map();
@@ -35,6 +36,50 @@ class ProjectList {
   }
   getProjectArr() {
     return this.projectArr;
+  }
+  serialize() {
+    const serializedProjectArr = Array.from(this.projectArr.entries()).map(
+      ([projectName, project]) => {
+        return [
+          projectName,
+          {
+            name: project.name,
+            default: project.default,
+            isRepeat: project.isRepeat,
+            taskList: Array.from(project.taskList.entries()), // Serialize taskList
+          },
+        ];
+      }
+    );
+
+    return JSON.stringify({
+      projectArr: serializedProjectArr,
+      activeProject: this.activeProject,
+    });
+  }
+  static deserialize(data) {
+    const parsedData = JSON.parse(data);
+    const projectList = new ProjectList();
+
+    parsedData.projectArr.forEach(([projectName, projectData]) => {
+      const project = new Project(projectData.name, projectData.default);
+
+      // Set other properties of the project
+      project.isRepeat = projectData.isRepeat;
+
+      // Deserialize taskList for the project
+      projectData.taskList.forEach(([taskName, taskData]) => {
+        const task = new Task(/* pass necessary arguments */);
+        // Set other properties of the task
+        project.taskList.set(taskName, task);
+      });
+
+      projectList.projectArr.set(projectName, project);
+    });
+
+    projectList.activeProject = parsedData.activeProject;
+
+    return projectList;
   }
 }
 
@@ -80,8 +125,25 @@ class allTasks {
     return thisWeekArr;
   }
   getAllTaskList() {
-    console.log(this.sortedArray);
     return this.sortedArray;
+  }
+  serialize() {
+    return JSON.stringify({
+      allTasksList: [...this.allTasksList], // Shallow copy of the array
+      currIndex: this.currIndex,
+      sortedArray: [...this.sortedArray], // Shallow copy of the array
+    });
+  }
+
+  static deserialize(data) {
+    const parsedData = JSON.parse(data);
+    const tasksInstance = new allTasks();
+
+    tasksInstance.allTasksList = [...parsedData.allTasksList]; // Shallow copy of the array
+    tasksInstance.currIndex = parsedData.currIndex;
+    tasksInstance.sortedArray = [...parsedData.sortedArray]; // Shallow copy of the array
+
+    return tasksInstance;
   }
 }
 
@@ -140,9 +202,11 @@ class Project {
       // Remove all tasks from this project from the AllTasksList
       this.taskList.forEach((task, key) => {
         allTasksList.removeTask(task.getTaskIndex());
+        saveToLocalStorage("allTasksList", allTasksList.serialize());
       });
       // Remove project frome projectList
       projectList.removeProject(this.name);
+      saveToLocalStorage("projectList", projectList.serialize());
     });
 
     // event listeners to show hide the delete icon
@@ -186,6 +250,7 @@ class Project {
     if (!this.taskList.has(task.getName())) {
       this.taskList.set(task.getName(), task);
       allTasksList.addTask(task);
+      saveToLocalStorage("allTasksList", allTasksList.serialize());
       console.log(this.taskList);
     } else {
       task.setIsRepeat(true);
@@ -347,6 +412,7 @@ class Task {
       const currProject = projectList.searchProject(this.projectAssosciation);
       currProject.removeTask(this.taskName);
       allTasksList.removeTask(this.taskIndex);
+      saveToLocalStorage("allTasksList", allTasksList.serialize());
     });
     return card;
   }

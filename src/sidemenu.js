@@ -1,4 +1,5 @@
 import { Project, ProjectList } from "./controls";
+import saveToLocalStorage from "./localStorageMGT";
 const projectList = new ProjectList();
 function sideMenu() {
   const menuContainer = document.createElement("div");
@@ -23,15 +24,17 @@ function sideMenu() {
   const homeDefault = new Project("Home", true);
   projectList.addProject(homeDefault);
   defaultsContainer.appendChild(homeDefault.displayTag());
+  saveToLocalStorage("projectList", projectList.serialize());
   // Today
   const todayDefault = new Project("Today", true);
   projectList.addProject(todayDefault);
   defaultsContainer.appendChild(todayDefault.displayTag());
+  saveToLocalStorage("projectList", projectList.serialize());
   // Week
   const weekDefault = new Project("This Week", true);
   projectList.addProject(weekDefault);
   defaultsContainer.appendChild(weekDefault.displayTag());
-
+  saveToLocalStorage("projectList", projectList.serialize());
   // Horizontal Rule
   const horizontalRule = document.createElement("hr");
   horizontalRule.classList.add("text-light");

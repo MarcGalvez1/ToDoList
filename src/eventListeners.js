@@ -1,6 +1,7 @@
 import { Project, Task } from "./controls";
 import { projectList } from "./sidemenu";
 import { allTasksList } from "./controls";
+import saveToLocalStorage from "./localStorageMGT";
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
@@ -64,6 +65,7 @@ function eventListeners() {
         projectListInput.appendChild(option);
       }
 
+      saveToLocalStorage("projectList", projectList.serialize());
       document.getElementById("project-name").value = "";
     };
 
@@ -116,6 +118,7 @@ function eventListeners() {
       const taskContainer = document.getElementById("task-list-container");
       const currProject = projectList.searchProject(projectListVal);
       currProject.addTask(currTask);
+      saveToLocalStorage("projectList", projectList.serialize());
 
       if (!currTask.getIsRepeat()) {
         switch (projectList.getActiveProject().getName()) {
@@ -138,8 +141,11 @@ function eventListeners() {
               taskContainer.appendChild(task.createTask());
             }
             break;
-          default:
+          case currProject.getName():
             taskContainer.appendChild(currTask.createTask());
+            break;
+          default:
+            // Does nothing because it should not display if the selected project isnt the active project
             break;
         }
       }
