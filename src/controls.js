@@ -153,10 +153,22 @@ class allTasks {
     return this.sortedArray;
   }
   serialize() {
+    const serializedAllTasksList = this.allTasksList.map((task) => {
+      return {
+        taskName: task.taskName,
+        taskDescription: task.taskDescription,
+        taskDueDate: task.taskDueDate,
+        projectAssociation: task.projectAssociation,
+        taskIndex: task.taskIndex,
+        isRepeat: task.isRepeat,
+        isComplete: task.isComplete,
+      };
+    });
+
     return JSON.stringify({
-      allTasksList: [...this.allTasksList], // Shallow copy of the array
+      allTasksList: serializedAllTasksList,
       currIndex: this.currIndex,
-      sortedArray: [...this.sortedArray], // Shallow copy of the array
+      sortedArray: this.sortedArray.map((task) => task.taskIndex), // Serialized only task indexes for sorting logic
     });
   }
 
@@ -164,9 +176,37 @@ class allTasks {
     const parsedData = JSON.parse(data);
     const tasksInstance = new allTasks();
 
-    tasksInstance.allTasksList = [...parsedData.allTasksList]; // Shallow copy of the array
+    if (Array.isArray(parsedData.allTasksList)) {
+      tasksInstance.allTasksList = parsedData.allTasksList.map((taskData) => {
+        const task = new Task(
+          taskData.taskName,
+          taskData.taskDescription,
+          taskData.taskDueDate,
+          taskData.projectAssociation
+        );
+
+        // Copy additional properties if needed
+        task.taskIndex = taskData.taskIndex;
+        task.isRepeat = taskData.isRepeat;
+        task.isComplete = taskData.isComplete;
+
+        return task;
+      });
+    }
+
+    if (Array.isArray(parsedData.sortedArray)) {
+      tasksInstance.sortedArray = tasksInstance.allTasksList
+        .slice()
+        .sort((a, b) => {
+          // Implement your sorting logic based on task indexes
+          return (
+            parsedData.sortedArray.indexOf(a.taskIndex) -
+            parsedData.sortedArray.indexOf(b.taskIndex)
+          );
+        });
+    }
+
     tasksInstance.currIndex = parsedData.currIndex;
-    tasksInstance.sortedArray = [...parsedData.sortedArray]; // Shallow copy of the array
 
     return tasksInstance;
   }
@@ -339,7 +379,6 @@ class Task {
   constructor(taskName, taskDescription, taskDueDate, projectAssosciation) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
-
     this.taskDueDate = taskDueDate;
     this.projectAssosciation = projectAssosciation;
     this.taskIndex = 0;
@@ -477,9 +516,8 @@ function createButton(text, btnClass, btnId, textClass) {
 
   return button;
 }
-// const storedAllTasksList = loadFromLocalStorage("allTasksList");
-const allTasksList = new allTasks();
-// storedAllTasksList
-// ? allTasks.deserialize(storedAllTasksList)
-// : new allTasks();
+const storedAllTasksList = loadFromLocalStorage("allTasksList");
+const allTasksList = storedAllTasksList
+  ? allTasks.deserialize(storedAllTasksList)
+  : new allTasks();
 export { Project, Task, ProjectList, allTasksList };

@@ -56,6 +56,11 @@ function eventListeners() {
           projectsMenu.appendChild(project.displayTag());
         }
       });
+
+      const taskContainer = document.getElementById("task-list-container");
+      for (const task of allTasksList.getAllTaskList()) {
+        taskContainer.appendChild(task.createTask());
+      }
     });
     const projectsContainer = document.getElementById("projects-container");
 
