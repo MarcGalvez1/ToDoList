@@ -40,13 +40,26 @@ class ProjectList {
   serialize() {
     const serializedProjectArr = Array.from(this.projectArr.entries()).map(
       ([projectName, project]) => {
+        const serializedTaskList = Array.from(project.taskList.entries()).map(
+          ([taskName, task]) => {
+            return {
+              taskName: task.taskName,
+              taskDescription: task.taskDescription,
+              taskDueDate: task.taskDueDate,
+              isRepeat: task.isRepeat,
+              isComplete: task.isComplete,
+              // Add other properties of the task if needed
+            };
+          }
+        );
+
         return [
           projectName,
           {
             name: project.name,
             default: project.default,
             isRepeat: project.isRepeat,
-            taskList: Array.from(project.taskList.entries()), // Serialize taskList
+            taskList: serializedTaskList,
           },
         ];
       }
@@ -68,11 +81,23 @@ class ProjectList {
       project.isRepeat = projectData.isRepeat;
 
       // Deserialize taskList for the project
-      projectData.taskList.forEach(([taskName, taskData]) => {
-        const task = new Task(/* pass necessary arguments */);
+      const deserializedTaskList = projectData.taskList.map((taskData) => {
+        const task = new Task(
+          taskData.taskName,
+          taskData.taskDescription,
+          taskData.taskDueDate,
+          taskData.projectAssosciation
+        );
+
         // Set other properties of the task
-        project.taskList.set(taskName, task);
+        task.isRepeat = taskData.isRepeat;
+        task.isComplete = taskData.isComplete;
+
+        return [taskData.taskName, task];
       });
+
+      // Convert the deserialized taskList back to a Map
+      project.taskList = new Map(deserializedTaskList);
 
       projectList.projectArr.set(projectName, project);
     });
@@ -314,8 +339,8 @@ class Task {
   constructor(taskName, taskDescription, taskDueDate, projectAssosciation) {
     this.taskName = taskName;
     this.taskDescription = taskDescription;
-    this.parseDate = parse(taskDueDate, "yyyy-MM-dd", new Date());
-    this.taskDueDate = format(this.parseDate, "MM/dd/yyyy");
+
+    this.taskDueDate = taskDueDate;
     this.projectAssosciation = projectAssosciation;
     this.taskIndex = 0;
     this.isRepeat = false;

@@ -2,6 +2,7 @@ import { Project, Task } from "./controls";
 import { projectList } from "./sidemenu";
 import { allTasksList } from "./controls";
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorageMGT";
+import { format, parse } from "date-fns";
 function eventListeners() {
   document.addEventListener("DOMContentLoaded", () => {
     //Ensures that the DOM is loaded before activating the event listeners
@@ -47,8 +48,8 @@ function eventListeners() {
       }
 
       const defaultMenu = document.getElementById("defaults-container");
-      const projectsMenu = document.getElementById * "projects-container";
-      projectList.getProjectArr.forEach((project, key) => {
+      const projectsMenu = document.getElementById("projects-container");
+      projectList.getProjectArr().forEach((project, key) => {
         if (key === "Home" || key === "Today" || key === "This Week") {
           defaultMenu.appendChild(project.displayTag());
         } else {
@@ -118,11 +119,13 @@ function eventListeners() {
       const taskName = document.getElementById("task-name").value;
       const taskDescription = document.getElementById("task-description").value;
       const taskDue = document.getElementById("due-date").value;
+      const parseDate = parse(taskDue, "yyyy-MM-dd", new Date());
+      const taskDueDate = format(parseDate, "MM/dd/yyyy");
       const projectListVal = document.getElementById("project-choice").value;
       const currTask = new Task(
         taskName,
         taskDescription,
-        taskDue,
+        taskDueDate,
         projectListVal
       );
       const taskContainer = document.getElementById("task-list-container");
