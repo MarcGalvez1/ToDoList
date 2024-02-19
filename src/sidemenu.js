@@ -1,9 +1,6 @@
-import { Project, ProjectList } from "./controls";
+import { Project, projectList } from "./controls";
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorageMGT";
-const storedProjectList = loadFromLocalStorage("projectList");
-const projectList = storedProjectList
-  ? ProjectList.deserialize(storedProjectList)
-  : new ProjectList();
+
 function sideMenu() {
   const menuContainer = document.createElement("div");
   menuContainer.id = "menu";
@@ -73,5 +70,4 @@ function sideMenu() {
   return menuContainer;
 }
 
-export { projectList };
 export default sideMenu;

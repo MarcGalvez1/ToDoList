@@ -1,5 +1,4 @@
 import { sortBy } from "lodash";
-import { projectList } from "./sidemenu";
 import { format, parse, isToday, isThisWeek } from "date-fns";
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorageMGT";
 class ProjectList {
@@ -46,9 +45,10 @@ class ProjectList {
               taskName: task.taskName,
               taskDescription: task.taskDescription,
               taskDueDate: task.taskDueDate,
+              projectAssosciation: task.projectAssosciation, // This line includes projectAssociation
+              taskIndex: task.taskIndex,
               isRepeat: task.isRepeat,
               isComplete: task.isComplete,
-              // Add other properties of the task if needed
             };
           }
         );
@@ -123,7 +123,7 @@ class allTasks {
     console.log("task list: " + this.allTasksList);
   }
   removeTask(removeIndex) {
-    this.allTasksList.splice(removeIndex);
+    this.allTasksList.splice(removeIndex, 1);
     this.currIndex -= 1;
     this.sortArray();
     console.log("task list: " + this.allTasksList);
@@ -158,7 +158,7 @@ class allTasks {
         taskName: task.taskName,
         taskDescription: task.taskDescription,
         taskDueDate: task.taskDueDate,
-        projectAssociation: task.projectAssociation,
+        projectAssosciation: task.projectAssosciation, // This line includes projectAssociation
         taskIndex: task.taskIndex,
         isRepeat: task.isRepeat,
         isComplete: task.isComplete,
@@ -182,7 +182,7 @@ class allTasks {
           taskData.taskName,
           taskData.taskDescription,
           taskData.taskDueDate,
-          taskData.projectAssociation
+          taskData.projectAssosciation
         );
 
         // Copy additional properties if needed
@@ -326,6 +326,7 @@ class Project {
   removeTask(taskName) {
     this.taskList.delete(taskName);
     console.log(this.taskList);
+    saveToLocalStorage("projectList", projectList.serialize());
   }
 
   displayAllTasks() {
@@ -381,6 +382,7 @@ class Task {
     this.taskDescription = taskDescription;
     this.taskDueDate = taskDueDate;
     this.projectAssosciation = projectAssosciation;
+    console.log("projectAssosciation: " + this.projectAssosciation);
     this.taskIndex = 0;
     this.isRepeat = false;
     this.isComplete = false;
@@ -474,7 +476,13 @@ class Task {
       // Remove the DOM element for the correct card and remove from the project task list
       card.remove();
       const currProject = projectList.searchProject(this.projectAssosciation);
-      currProject.removeTask(this.taskName);
+
+      if (currProject) {
+        currProject.removeTask(this.taskName);
+      } else {
+        console.error("Current project not found:", this.projectAssosciation);
+      }
+
       allTasksList.removeTask(this.taskIndex);
       saveToLocalStorage("allTasksList", allTasksList.serialize());
     });
@@ -516,8 +524,18 @@ function createButton(text, btnClass, btnId, textClass) {
 
   return button;
 }
+const storedProjectList = loadFromLocalStorage("projectList");
+const projectList = storedProjectList
+  ? ProjectList.deserialize(storedProjectList)
+  : new ProjectList();
+
 const storedAllTasksList = loadFromLocalStorage("allTasksList");
+console.log("Stored allTasksList:", storedAllTasksList);
+
 const allTasksList = storedAllTasksList
   ? allTasks.deserialize(storedAllTasksList)
   : new allTasks();
-export { Project, Task, ProjectList, allTasksList };
+console.log("Deserialized allTasksList:", allTasksList);
+console.log(projectList);
+console.log(allTasksList);
+export { Project, Task, ProjectList, allTasksList, projectList };

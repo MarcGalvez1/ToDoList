@@ -1,5 +1,4 @@
-import { Project, Task } from "./controls";
-import { projectList } from "./sidemenu";
+import { Project, Task, projectList } from "./controls";
 import { allTasksList } from "./controls";
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorageMGT";
 import { format, parse } from "date-fns";
